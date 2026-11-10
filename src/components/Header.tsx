@@ -1,17 +1,30 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { loadUserStats, UserStats } from '@/lib/storage';
 import { useAuth } from '@/components/AuthProvider';
 import ThemeToggle from '@/components/ThemeToggle';
-import { BookOpen, Calendar, Flame, GraduationCap, Home, Languages, LogIn, LogOut, Loader2, Sparkles } from 'lucide-react';
+import { BookOpen, Calendar, Cloud, Flame, GraduationCap, Home, Languages, LogIn, LogOut, Loader2, Sparkles } from 'lucide-react';
 
 export default function Header() {
   const pathname = usePathname();
   const [stats, setStats] = useState<UserStats | null>(null);
   const { user, loading, signInWithGoogle, signOut, isSyncing } = useAuth();
+  const [profileOpen, setProfileOpen] = useState(false);
+  const profileRef = useRef<HTMLDivElement>(null);
+
+  // 외부 클릭 시 드롭다운 닫기
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (profileRef.current && !profileRef.current.contains(e.target as Node)) {
+        setProfileOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     // 최초 로드 및 로컬스토리지 변경 이벤트 감지
@@ -89,26 +102,77 @@ export default function Header() {
               <Loader2 className="w-4 h-4 animate-spin text-zinc-400" />
             </div>
           ) : user ? (
-            <button
-              onClick={signOut}
-              disabled={isSyncing}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors text-xs font-semibold text-zinc-600 dark:text-zinc-300"
-              title={`${user.email} · 로그아웃`}
-            >
-              {user.user_metadata?.avatar_url ? (
-                <img
-                  src={user.user_metadata.avatar_url}
-                  alt=""
-                  className="w-6 h-6 rounded-full"
-                  referrerPolicy="no-referrer"
-                />
-              ) : (
-                <div className="w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center text-xs font-bold">
-                  {user.email?.[0]?.toUpperCase() ?? '?'}
+            <div className="relative" ref={profileRef}>
+              <button
+                onClick={() => setProfileOpen(!profileOpen)}
+                className="flex items-center gap-1.5 px-1.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
+              >
+                {user.user_metadata?.avatar_url ? (
+                  <img
+                    src={user.user_metadata.avatar_url}
+                    alt=""
+                    className="w-7 h-7 rounded-full ring-2 ring-emerald-400"
+                    referrerPolicy="no-referrer"
+                  />
+                ) : (
+                  <div className="w-7 h-7 rounded-full bg-rose-500 text-white flex items-center justify-center text-xs font-bold ring-2 ring-emerald-400">
+                    {user.email?.[0]?.toUpperCase() ?? '?'}
+                  </div>
+                )}
+              </button>
+
+              {/* 프로필 드롭다운 */}
+              {profileOpen && (
+                <div className="absolute right-0 top-12 w-64 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl shadow-xl z-50 overflow-hidden">
+                  {/* 사용자 정보 */}
+                  <div className="px-4 py-3 border-b border-zinc-100 dark:border-zinc-800">
+                    <div className="flex items-center gap-3">
+                      {user.user_metadata?.avatar_url ? (
+                        <img
+                          src={user.user_metadata.avatar_url}
+                          alt=""
+                          className="w-10 h-10 rounded-full"
+                          referrerPolicy="no-referrer"
+                        />
+                      ) : (
+                        <div className="w-10 h-10 rounded-full bg-rose-500 text-white flex items-center justify-center font-bold">
+                          {user.email?.[0]?.toUpperCase() ?? '?'}
+                        </div>
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <div className="text-sm font-bold text-zinc-900 dark:text-zinc-100 truncate">
+                          {user.user_metadata?.full_name || '사용자'}
+                        </div>
+                        <div className="text-xs text-zinc-500 dark:text-zinc-400 truncate">
+                          {user.email}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 동기화 상태 */}
+                  <div className="px-4 py-2.5 border-b border-zinc-100 dark:border-zinc-800">
+                    <div className="flex items-center gap-2 text-xs text-emerald-600 dark:text-emerald-400 font-medium">
+                      <Cloud className="w-3.5 h-3.5" />
+                      클라우드 동기화 활성화됨
+                    </div>
+                  </div>
+
+                  {/* 로그아웃 */}
+                  <button
+                    onClick={() => {
+                      setProfileOpen(false);
+                      signOut();
+                    }}
+                    disabled={isSyncing}
+                    className="w-full px-4 py-3 flex items-center gap-2 text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    {isSyncing ? '동기화 중...' : '로그아웃'}
+                  </button>
                 </div>
               )}
-              <LogOut className="w-3.5 h-3.5 hidden md:block" />
-            </button>
+            </div>
           ) : (
             <button
               onClick={signInWithGoogle}
