@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     apple: '/icons/icon.svg',
   },
   other: {
-    'color-scheme': 'light dark',
+    'color-scheme': 'only light',
   },
 };
 
@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="ko" data-theme="light" suppressHydrationWarning>
       <head>
-        <meta name="color-scheme" content="light dark" />
+        <meta name="color-scheme" content="only light" id="color-scheme-meta" />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function() {
@@ -44,12 +44,17 @@ export default function RootLayout({
     var theme = localStorage.getItem('nihongo_theme') || 'light';
     var root = document.documentElement;
     root.setAttribute('data-theme', theme);
+    var meta = document.getElementById('color-scheme-meta');
     if (theme === 'dark') {
       root.classList.add('dark');
       root.classList.remove('light');
+      root.style.colorScheme = 'only dark';
+      if (meta) meta.setAttribute('content', 'only dark');
     } else {
       root.classList.remove('dark');
       root.classList.add('light');
+      root.style.colorScheme = 'only light';
+      if (meta) meta.setAttribute('content', 'only light');
     }
   } catch(e) {}
 })();`,

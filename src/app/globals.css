@@ -2,34 +2,26 @@
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, .dark, .dark *));
 
-/* ========================================================
-   [삼성인터넷 & 크롬 강제 다크모드 차단 3단 콤보]
-   ======================================================== */
+/* ==========================================================================
+   [모바일 크롬 / 안드로이드 강제 다크모드(Auto Dark Mode) 완벽 차단]
+   크롬 Blink 엔진 공식 표준: 'color-scheme: only light'
+   이 속성이 선언되면 안드로이드 크롬의 자동 명도 반전 필터가 완전히 비활성화(Opt-out)됩니다.
+   ========================================================================== */
 
-/* ① 1단계: 브라우저에 다크모드 지원 선언 */
 :root {
-  color-scheme: light dark;
+  color-scheme: only light !important;
 }
 
-/* ② 2단계 증거: 삼성인터넷/크롬 자동 다크모드 비활성화를 위한 네이티브 다크모드 증거 블록 */
-/* CSS 변수뿐 아니라 실제 속성을 선언해야 삼성인터넷/크롬이 "자체 지원"으로 인식하여 강제 반전을 끕니다 */
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: light dark;
-    --background: #09090b;
-    --foreground: #f4f4f5;
-  }
-  body {
-    background-color: #09090b;
-    color: #f4f4f5;
-  }
+/* 시스템 다크모드(@media)에 의한 자동 전환을 완전히 배제하고 오직 data-theme으로만 제어 */
+html[data-theme="light"],
+html[data-theme="light"] body,
+html[data-theme="light"] * {
+  color-scheme: only light !important;
 }
 
-/* ③ 3단계: data-theme 속성으로 실제 라이트/다크 모드 강력하게 덮어쓰기 */
 html[data-theme="light"] {
-  color-scheme: light !important;
-  --background: #ffffff !important;
-  --foreground: #18181b !important;
+  --background: #ffffff;
+  --foreground: #18181b;
 }
 
 html[data-theme="light"] body {
@@ -37,10 +29,15 @@ html[data-theme="light"] body {
   color: #18181b !important;
 }
 
+html[data-theme="dark"],
+html[data-theme="dark"] body,
+html[data-theme="dark"] * {
+  color-scheme: only dark !important;
+}
+
 html[data-theme="dark"] {
-  color-scheme: dark !important;
-  --background: #09090b !important;
-  --foreground: #f4f4f5 !important;
+  --background: #09090b;
+  --foreground: #f4f4f5;
 }
 
 html[data-theme="dark"] body {
@@ -48,7 +45,7 @@ html[data-theme="dark"] body {
   color: #f4f4f5 !important;
 }
 
-/* 스마트폰 브라우저의 강제 반전 필터 무효화 */
+/* 스마트폰 브라우저의 강제 색상 왜곡 방지 */
 html, body {
   forced-color-adjust: none !important;
   -webkit-forced-color-adjust: none !important;

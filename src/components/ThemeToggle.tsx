@@ -10,12 +10,18 @@ export default function ThemeToggle() {
   const applyTheme = (targetTheme: 'light' | 'dark') => {
     const root = document.documentElement;
     root.setAttribute('data-theme', targetTheme);
+    const meta = document.getElementById('color-scheme-meta');
+
     if (targetTheme === 'dark') {
       root.classList.add('dark');
       root.classList.remove('light');
+      root.style.colorScheme = 'only dark';
+      if (meta) meta.setAttribute('content', 'only dark');
     } else {
       root.classList.remove('dark');
       root.classList.add('light');
+      root.style.colorScheme = 'only light';
+      if (meta) meta.setAttribute('content', 'only light');
     }
   };
 
