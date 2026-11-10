@@ -16,8 +16,7 @@ export const metadata: Metadata = {
     apple: '/icons/icon.svg',
   },
   other: {
-    'color-scheme': 'only light',
-    'supported-color-schemes': 'only light',
+    'color-scheme': 'light dark',
   },
 };
 
@@ -37,8 +36,7 @@ export default function RootLayout({
   return (
     <html lang="ko" data-theme="light" suppressHydrationWarning>
       <head>
-        <meta name="color-scheme" content="only light" id="color-scheme-meta" />
-        <meta name="supported-color-schemes" content="only light" id="supported-color-schemes-meta" />
+        <meta name="color-scheme" content="light dark" />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function() {
@@ -46,20 +44,12 @@ export default function RootLayout({
     var theme = localStorage.getItem('nihongo_theme') || 'light';
     var root = document.documentElement;
     root.setAttribute('data-theme', theme);
-    var meta1 = document.getElementById('color-scheme-meta');
-    var meta2 = document.getElementById('supported-color-schemes-meta');
     if (theme === 'dark') {
       root.classList.add('dark');
       root.classList.remove('light');
-      root.style.colorScheme = 'only dark';
-      if (meta1) meta1.setAttribute('content', 'only dark');
-      if (meta2) meta2.setAttribute('content', 'only dark');
     } else {
       root.classList.remove('dark');
       root.classList.add('light');
-      root.style.colorScheme = 'only light';
-      if (meta1) meta1.setAttribute('content', 'only light');
-      if (meta2) meta2.setAttribute('content', 'only light');
     }
   } catch(e) {}
 })();`,
