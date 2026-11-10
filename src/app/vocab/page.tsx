@@ -1,14 +1,34 @@
 'use client';
 
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { VOCAB_DATA, WordItem } from '@/data/vocabData';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
+import { ALL_VOCAB } from '@/data/vocabData';
 import VocabCard from '@/components/VocabCard';
 import { loadUserStats, toggleBookmark } from '@/lib/storage';
-import { BookOpen, Bookmark, Filter, Search, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, PlayCircle } from 'lucide-react';
+import { BookOpen, Bookmark, Filter, Flag, Search, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
 
 const PAGE_SIZE = 30;
-const LAST_PAGE_KEY = 'nihongo_vocab_last_page';
-const LAST_FILTER_KEY = 'nihongo_vocab_last_filter';
+const LAST_STUDIED_KEY = 'nihongo_vocab_last_studied';
+
+// 전체 단어장에서의 고정 번호 맵 (필터와 무관)
+const WORD_NUMBER_MAP = new Map<string, number>();
+ALL_VOCAB.forEach((w, i) => WORD_NUMBER_MAP.set(w.id, i + 1));
+
+// 급수 정렬 우선순위
+const LEVEL_ORDER: Record<string, number> = { N5: 0, N4: 1, N3: 2, N2: 3, N1: 4 };
+const CATEGORY_ORDER: Record<string, number> = {
+  basic: 0, daily: 1, conversation: 2, travel: 3, food: 4,
+  restaurant: 5, shopping: 6, entertainment: 7, business: 8, emotion: 9,
+};
+
+// 급수 → 카테고리 순으로 정렬된 전체 단어 (고정 번호도 재할당)
+const SORTED_VOCAB = [...ALL_VOCAB].sort((a, b) => {
+  const lvl = (LEVEL_ORDER[a.level] ?? 99) - (LEVEL_ORDER[b.level] ?? 99);
+  if (lvl !== 0) return lvl;
+  return (CATEGORY_ORDER[a.category] ?? 99) - (CATEGORY_ORDER[b.category] ?? 99);
+});
+// 정렬 후 고정 번호 재할당
+const SORTED_NUMBER_MAP = new Map<string, number>();
+SORTED_VOCAB.forEach((w, i) => SORTED_NUMBER_MAP.set(w.id, i + 1));
 
 export default function VocabPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -18,41 +38,27 @@ export default function VocabPage() {
   const [bookmarks, setBookmarks] = useState<string[]>([]);
   const [showHangul, setShowHangul] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [lastSavedPage, setLastSavedPage] = useState<number | null>(null);
-  const [lastSavedFilter, setLastSavedFilter] = useState<string | null>(null);
+  const [lastStudied, setLastStudied] = useState<{ id: string; number: number; kanji: string; kana: string; meaning: string } | null>(null);
+  const isInitialMount = useRef(true);
 
-  // 초기 로드: 북마크 & 마지막 학습 위치
+  // 초기 로드
   useEffect(() => {
     const stats = loadUserStats();
     setBookmarks(stats.bookmarks || []);
 
-    // 마지막 학습 위치 복원
+    // 학습 마커 복원
     try {
-      const savedPage = localStorage.getItem(LAST_PAGE_KEY);
-      const savedFilter = localStorage.getItem(LAST_FILTER_KEY);
-      if (savedPage) {
-        const pageNum = parseInt(savedPage, 10);
-        setLastSavedPage(pageNum);
-        setLastSavedFilter(savedFilter || '전체');
-      }
+      const saved = localStorage.getItem(LAST_STUDIED_KEY);
+      if (saved) setLastStudied(JSON.parse(saved));
     } catch (e) {}
+
+    setTimeout(() => { isInitialMount.current = false; }, 100);
   }, []);
 
-  // 필터/검색 변경 시 1페이지로 리셋
+  // 필터/검색 변경 시 1페이지로 리셋 (초기 마운트 제외)
   useEffect(() => {
-    setCurrentPage(1);
+    if (!isInitialMount.current) setCurrentPage(1);
   }, [searchQuery, selectedLevel, selectedCategory, onlyBookmarks]);
-
-  // 현재 페이지 변경 시 마지막 위치 자동 저장
-  useEffect(() => {
-    if (currentPage > 0) {
-      try {
-        localStorage.setItem(LAST_PAGE_KEY, String(currentPage));
-        const filterLabel = selectedLevel === 'all' ? '전체' : selectedLevel;
-        localStorage.setItem(LAST_FILTER_KEY, filterLabel);
-      } catch (e) {}
-    }
-  }, [currentPage, selectedLevel]);
 
   const handleToggleBookmark = (id: string) => {
     const isNowBookmarked = toggleBookmark(id);
@@ -61,19 +67,19 @@ export default function VocabPage() {
     );
   };
 
-  // 필터링 로직
   const filteredWords = useMemo(() => {
-    return VOCAB_DATA.filter((word) => {
+    return SORTED_VOCAB.filter((word) => {
       if (selectedLevel !== 'all' && word.level !== selectedLevel) return false;
       if (selectedCategory !== 'all' && word.category !== selectedCategory) return false;
       if (onlyBookmarks && !bookmarks.includes(word.id)) return false;
       if (searchQuery.trim() !== '') {
         const query = searchQuery.trim().toLowerCase();
-        const matchKanji = word.kanji.toLowerCase().includes(query);
-        const matchKana = word.kana.toLowerCase().includes(query);
-        const matchRomaji = word.romaji.toLowerCase().includes(query);
-        const matchMeaning = word.meaning.toLowerCase().includes(query);
-        return matchKanji || matchKana || matchRomaji || matchMeaning;
+        return (
+          word.kanji.toLowerCase().includes(query) ||
+          word.kana.toLowerCase().includes(query) ||
+          word.romaji.toLowerCase().includes(query) ||
+          word.meaning.toLowerCase().includes(query)
+        );
       }
       return true;
     });
@@ -85,42 +91,64 @@ export default function VocabPage() {
   const endIdx = Math.min(startIdx + PAGE_SIZE, filteredWords.length);
   const currentWords = filteredWords.slice(startIdx, endIdx);
 
-  // 이어서 학습하기
-  const handleResumeLearning = useCallback(() => {
-    if (lastSavedPage) {
-      // 필터가 전체일 때만 바로 이동 (다른 필터 상태였다면 리셋)
-      setSelectedLevel('all');
-      setSelectedCategory('all');
-      setOnlyBookmarks(false);
-      setSearchQuery('');
-      // 약간의 딜레이 후 페이지 이동 (필터 리셋 반영 대기)
-      setTimeout(() => {
-        const maxPage = Math.ceil(VOCAB_DATA.length / PAGE_SIZE);
-        setCurrentPage(Math.min(lastSavedPage, maxPage));
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 50);
+  // 🚩 단어에 학습 마커 꽂기/빼기
+  const handleMarkLastStudied = (id: string, number: number) => {
+    if (lastStudied?.id === id) {
+      // 이미 꽂혀있으면 빼기
+      setLastStudied(null);
+      localStorage.removeItem(LAST_STUDIED_KEY);
+    } else {
+      const word = SORTED_VOCAB.find(w => w.id === id);
+      const marker = { id, number, kanji: word?.kanji || '', kana: word?.kana || '', meaning: word?.meaning || '' };
+      setLastStudied(marker);
+      localStorage.setItem(LAST_STUDIED_KEY, JSON.stringify(marker));
     }
-  }, [lastSavedPage]);
+  };
+
+  // 🚩 마커 단어로 이동
+  const handleGoToLastStudied = () => {
+    if (!lastStudied) return;
+    // 필터 초기화
+    setSelectedLevel('all');
+    setSelectedCategory('all');
+    setOnlyBookmarks(false);
+    setSearchQuery('');
+    setTimeout(() => {
+      // 정렬된 전체 목록에서의 인덱스 찾기
+      const idx = SORTED_VOCAB.findIndex(w => w.id === lastStudied.id);
+      if (idx >= 0) {
+        const targetPage = Math.floor(idx / PAGE_SIZE) + 1;
+        setCurrentPage(targetPage);
+        // 페이지 렌더 후 해당 카드로 스크롤
+        setTimeout(() => {
+          const el = document.getElementById(`word-${lastStudied.id}`);
+          if (el) {
+            el.scrollIntoView({ block: 'center' });
+            // 깜빡임 효과로 어떤 카드인지 알려주기
+            el.animate([
+              { boxShadow: '0 0 0 4px rgba(244,63,94,0.5)' },
+              { boxShadow: '0 0 0 0px rgba(244,63,94,0)' },
+            ], { duration: 1200, iterations: 2 });
+          }
+        }, 100);
+      }
+    }, 50);
+  };
 
   // 페이지 이동
   const goToPage = (page: number) => {
-    const target = Math.max(1, Math.min(page, totalPages));
-    setCurrentPage(target);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setCurrentPage(Math.max(1, Math.min(page, totalPages)));
+    window.scrollTo(0, 0);
   };
 
-  // 페이지 번호 버튼 생성 (최대 7개 표시)
+  // 페이지 번호 버튼 생성 (최대 7개)
   const getPageNumbers = (): number[] => {
     const pages: number[] = [];
     const maxVisible = 7;
     let start = Math.max(1, safeCurrentPage - Math.floor(maxVisible / 2));
     let end = Math.min(totalPages, start + maxVisible - 1);
-    if (end - start + 1 < maxVisible) {
-      start = Math.max(1, end - maxVisible + 1);
-    }
-    for (let i = start; i <= end; i++) {
-      pages.push(i);
-    }
+    if (end - start + 1 < maxVisible) start = Math.max(1, end - maxVisible + 1);
+    for (let i = start; i <= end; i++) pages.push(i);
     return pages;
   };
 
@@ -129,12 +157,16 @@ export default function VocabPage() {
     { key: 'all', name: '전체 분야' },
     { key: 'basic', name: '기초 필수' },
     { key: 'daily', name: '일상 회화' },
+    { key: 'conversation', name: '대화/소통' },
     { key: 'travel', name: '여행/공항' },
     { key: 'food', name: '음식/식당' },
+    { key: 'restaurant', name: '주문/식당' },
     { key: 'shopping', name: '쇼핑/마트' },
+    { key: 'entertainment', name: '엔터/문화' },
     { key: 'business', name: '비즈니스' },
     { key: 'emotion', name: '감정/심리' },
   ];
+
 
   return (
     <div className="space-y-6">
@@ -149,28 +181,27 @@ export default function VocabPage() {
         </p>
       </div>
 
-      {/* 이어서 학습하기 배너 */}
-      {lastSavedPage && lastSavedPage > 1 && (
+      {/* 🚩 학습 마커 배너: 마킹한 단어가 있을 때 표시 */}
+      {lastStudied && (
         <button
-          onClick={handleResumeLearning}
-          className="w-full flex items-center justify-between px-5 py-4 rounded-2xl bg-gradient-to-r from-rose-500 to-amber-500 text-white shadow-lg hover:shadow-xl active:scale-[0.99] transition-all"
+          onClick={handleGoToLastStudied}
+          className="w-full flex items-center justify-between px-5 py-3.5 rounded-2xl bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800 text-rose-800 dark:text-rose-200 hover:bg-rose-100 dark:hover:bg-rose-950/50 active:scale-[0.99] transition-all"
         >
           <div className="flex items-center gap-3">
-            <PlayCircle className="w-6 h-6" />
+            <Flag className="w-5 h-5 text-rose-500 fill-rose-500" />
             <div className="text-left">
-              <div className="font-bold text-sm">이어서 학습하기</div>
-              <div className="text-xs text-rose-100">
-                지난번 {lastSavedFilter || '전체'} · {lastSavedPage}페이지 ({(lastSavedPage - 1) * PAGE_SIZE + 1}~{lastSavedPage * PAGE_SIZE}번) 부터 이어서
+              <div className="font-bold text-sm">🚩 이어서 학습하기</div>
+              <div className="text-xs text-rose-600 dark:text-rose-400">
+                #{String(lastStudied.number).padStart(4, '0')} {lastStudied.kanji}({lastStudied.kana}) · {lastStudied.meaning}
               </div>
             </div>
           </div>
-          <ChevronRight className="w-5 h-5" />
+          <ChevronRight className="w-5 h-5 text-rose-400" />
         </button>
       )}
 
       {/* 필터 & 검색 바 */}
       <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-5 shadow-sm space-y-4">
-        {/* 검색창 */}
         <div className="relative">
           <Search className="w-5 h-5 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
@@ -182,9 +213,7 @@ export default function VocabPage() {
           />
         </div>
 
-        {/* 필터 칩스 */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-2">
-          {/* 급수 선택 */}
           <div className="flex items-center gap-1.5 flex-wrap">
             <span className="text-xs font-bold text-zinc-400 mr-1 flex items-center gap-1">
               <Filter className="w-3.5 h-3.5" />
@@ -205,7 +234,6 @@ export default function VocabPage() {
             ))}
           </div>
 
-          {/* 카테고리 & 북마크 필터 */}
           <div className="flex items-center gap-2 flex-wrap">
             <select
               value={selectedCategory}
@@ -213,9 +241,7 @@ export default function VocabPage() {
               className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 focus:outline-none"
             >
               {categories.map((c) => (
-                <option key={c.key} value={c.key}>
-                  {c.name}
-                </option>
+                <option key={c.key} value={c.key}>{c.name}</option>
               ))}
             </select>
 
@@ -231,7 +257,6 @@ export default function VocabPage() {
               내 단어장만 ({bookmarks.length})
             </button>
 
-            {/* 왕초보 한글 발음 모드 토글 */}
             <button
               onClick={() => setShowHangul(!showHangul)}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
@@ -247,68 +272,54 @@ export default function VocabPage() {
         </div>
       </div>
 
-      {/* 단어 통계 + 진도 표시 */}
+      {/* 단어 통계 */}
       <div className="flex items-center justify-between px-1">
         <span className="text-xs text-zinc-500">
           조회 결과:{' '}
-          <strong className="text-zinc-900 dark:text-zinc-100 font-bold">
-            {filteredWords.length}
-          </strong>
-          개 단어 ·{' '}
-          <strong className="text-rose-600 dark:text-rose-400 font-bold">
-            {startIdx + 1}~{endIdx}
-          </strong>
-          번 표시 중
+          <strong className="text-zinc-900 dark:text-zinc-100 font-bold">{filteredWords.length}</strong>개 단어 ·{' '}
+          <strong className="text-rose-600 dark:text-rose-400 font-bold">{startIdx + 1}~{endIdx}</strong>번 표시 중
         </span>
-        <span className="text-[11px] text-zinc-400">
-          {safeCurrentPage} / {totalPages} 페이지
-        </span>
+        <span className="text-[11px] text-zinc-400">{safeCurrentPage} / {totalPages} 페이지</span>
       </div>
 
       {/* 단어 그리드 */}
       {currentWords.length > 0 ? (
         <div className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {currentWords.map((word, idx) => (
-              <VocabCard
-                key={word.id}
-                word={word}
-                isBookmarked={bookmarks.includes(word.id)}
-                onToggleBookmark={handleToggleBookmark}
-                showHangul={showHangul}
-              />
-            ))}
+            {currentWords.map((word) => {
+              const fixedNumber = SORTED_NUMBER_MAP.get(word.id) || 0;
+              return (
+                <VocabCard
+                  key={word.id}
+                  word={word}
+                  isBookmarked={bookmarks.includes(word.id)}
+                  onToggleBookmark={handleToggleBookmark}
+                  showHangul={showHangul}
+                  wordNumber={fixedNumber}
+                  isLastStudied={lastStudied?.id === word.id}
+                  onMarkLastStudied={handleMarkLastStudied}
+                />
+              );
+            })}
           </div>
 
           {/* 페이지네이션 */}
           {totalPages > 1 && (
             <div className="flex items-center justify-center gap-1.5 pt-2 pb-4 flex-wrap">
-              {/* 처음 */}
-              <button
-                onClick={() => goToPage(1)}
-                disabled={safeCurrentPage === 1}
-                className="p-2 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 disabled:opacity-30 disabled:cursor-not-allowed hover:border-rose-400 transition-all"
-                title="처음"
-              >
+              <button onClick={() => goToPage(1)} disabled={safeCurrentPage === 1}
+                className="p-2 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 disabled:opacity-30 disabled:cursor-not-allowed hover:border-rose-400 transition-all" title="처음">
                 <ChevronsLeft className="w-4 h-4" />
               </button>
-
-              {/* 이전 */}
-              <button
-                onClick={() => goToPage(safeCurrentPage - 1)}
-                disabled={safeCurrentPage === 1}
-                className="p-2 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 disabled:opacity-30 disabled:cursor-not-allowed hover:border-rose-400 transition-all"
-                title="이전"
-              >
+              <button onClick={() => goToPage(safeCurrentPage - 1)} disabled={safeCurrentPage === 1}
+                className="p-2 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 disabled:opacity-30 disabled:cursor-not-allowed hover:border-rose-400 transition-all" title="이전">
                 <ChevronLeft className="w-4 h-4" />
               </button>
 
-              {/* 페이지 번호들 */}
               {getPageNumbers().map((pageNum) => (
                 <button
                   key={pageNum}
                   onClick={() => goToPage(pageNum)}
-                  className={`min-w-[2.5rem] h-10 rounded-lg text-sm font-bold transition-all ${
+                  className={`min-w-[2.5rem] h-10 rounded-lg text-sm font-bold transition-all relative ${
                     pageNum === safeCurrentPage
                       ? 'bg-rose-500 text-white shadow-sm'
                       : 'bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 hover:border-rose-400 hover:text-rose-500'
@@ -318,23 +329,12 @@ export default function VocabPage() {
                 </button>
               ))}
 
-              {/* 다음 */}
-              <button
-                onClick={() => goToPage(safeCurrentPage + 1)}
-                disabled={safeCurrentPage === totalPages}
-                className="p-2 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 disabled:opacity-30 disabled:cursor-not-allowed hover:border-rose-400 transition-all"
-                title="다음"
-              >
+              <button onClick={() => goToPage(safeCurrentPage + 1)} disabled={safeCurrentPage === totalPages}
+                className="p-2 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 disabled:opacity-30 disabled:cursor-not-allowed hover:border-rose-400 transition-all" title="다음">
                 <ChevronRight className="w-4 h-4" />
               </button>
-
-              {/* 끝 */}
-              <button
-                onClick={() => goToPage(totalPages)}
-                disabled={safeCurrentPage === totalPages}
-                className="p-2 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 disabled:opacity-30 disabled:cursor-not-allowed hover:border-rose-400 transition-all"
-                title="끝"
-              >
+              <button onClick={() => goToPage(totalPages)} disabled={safeCurrentPage === totalPages}
+                className="p-2 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 disabled:opacity-30 disabled:cursor-not-allowed hover:border-rose-400 transition-all" title="끝">
                 <ChevronsRight className="w-4 h-4" />
               </button>
             </div>
@@ -345,12 +345,7 @@ export default function VocabPage() {
           <BookOpen className="w-10 h-10 text-zinc-300 mx-auto mb-3" />
           <p className="text-zinc-500 font-medium">검색 조건에 맞는 단어가 없습니다.</p>
           <button
-            onClick={() => {
-              setSearchQuery('');
-              setSelectedLevel('all');
-              setSelectedCategory('all');
-              setOnlyBookmarks(false);
-            }}
+            onClick={() => { setSearchQuery(''); setSelectedLevel('all'); setSelectedCategory('all'); setOnlyBookmarks(false); }}
             className="mt-4 px-4 py-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-xs font-bold text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200"
           >
             필터 초기화

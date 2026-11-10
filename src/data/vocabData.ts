@@ -5,7 +5,7 @@ export interface WordItem {
   romaji: string;
   meaning: string;
   level: 'N5' | 'N4' | 'N3' | 'N2' | 'N1';
-  category: 'daily' | 'travel' | 'food' | 'shopping' | 'business' | 'emotion' | 'basic';
+  category: 'daily' | 'travel' | 'food' | 'shopping' | 'business' | 'emotion' | 'basic' | 'entertainment' | 'conversation' | 'restaurant';
   example?: {
     japanese: string;
     reading: string;
@@ -20,7 +20,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "くうこう",
     "romaji": "kuukou",
     "meaning": "공항",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "成田空港に到着しました。",
@@ -48,7 +48,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ぱすぽーと",
     "romaji": "pasupooto",
     "meaning": "여권",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "パスポートを見せてください。",
@@ -104,7 +104,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "のりかえ",
     "romaji": "norikae",
     "meaning": "환승, 갈아타기",
-    "level": "N4",
+    "level": "N2",
     "category": "travel",
     "example": {
       "japanese": "次の駅で乗り換えです。",
@@ -202,7 +202,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "りょうがえ",
     "romaji": "ryougae",
     "meaning": "환전",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "日本円に両替したいです。",
@@ -216,7 +216,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんこう",
     "romaji": "kankou",
     "meaning": "관광",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "京都を観光しました。",
@@ -230,7 +230,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "おみやげ",
     "romaji": "omiyage",
     "meaning": "기념품, 선물",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "東京のお土産を買いました。",
@@ -244,7 +244,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "おんせん",
     "romaji": "onsen",
     "meaning": "온천",
-    "level": "N4",
+    "level": "N2",
     "category": "travel",
     "example": {
       "japanese": "有名な温泉に行きたいです。",
@@ -342,7 +342,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しんかんせん",
     "romaji": "shinkansen",
     "meaning": "신칸센 (고속철도)",
-    "level": "N4",
+    "level": "N2",
     "category": "travel",
     "example": {
       "japanese": "新幹線で大阪へ行きます。",
@@ -384,7 +384,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "れんたかー",
     "romaji": "rentakaa",
     "meaning": "렌터카",
-    "level": "N4",
+    "level": "N1",
     "category": "travel",
     "example": {
       "japanese": "レンタカーを借りました。",
@@ -412,7 +412,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きんえん",
     "romaji": "kin-en",
     "meaning": "금연",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "禁煙席をお願いします。",
@@ -440,7 +440,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ちゅうもん",
     "romaji": "chuumon",
     "meaning": "주문",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "注文をお願いします。",
@@ -454,7 +454,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "めにゅー",
     "romaji": "menyuu",
     "meaning": "메뉴판",
-    "level": "N5",
+    "level": "N2",
     "category": "food",
     "example": {
       "japanese": "英語のメニューはありますか？",
@@ -468,7 +468,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かいけい",
     "romaji": "kaikei",
     "meaning": "계산, 계산대",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "お会計をお願いします。",
@@ -678,7 +678,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんぱい",
     "romaji": "kanpai",
     "meaning": "건배",
-    "level": "N5",
+    "level": "N2",
     "category": "food",
     "example": {
       "japanese": "みんなで乾杯しましょう！",
@@ -706,7 +706,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "おかわり",
     "romaji": "okawari",
     "meaning": "한 그릇 더 (리필)",
-    "level": "N4",
+    "level": "N2",
     "category": "food",
     "example": {
       "japanese": "ご飯のおかわりをください。",
@@ -804,7 +804,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "めんぜい",
     "romaji": "menzei",
     "meaning": "면세 (Tax Free)",
-    "level": "N4",
+    "level": "N2",
     "category": "shopping",
     "example": {
       "japanese": "免税手続きをお願いします。",
@@ -818,7 +818,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ふくろ",
     "romaji": "fukuro",
     "meaning": "봉투 (비닐봉지)",
-    "level": "N5",
+    "level": "N3",
     "category": "shopping",
     "example": {
       "japanese": "レジ袋は結構です。",
@@ -860,7 +860,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "げんきん",
     "romaji": "genkin",
     "meaning": "현금",
-    "level": "N4",
+    "level": "N3",
     "category": "shopping",
     "example": {
       "japanese": "現金のみとなります。",
@@ -874,7 +874,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "わりびき",
     "romaji": "waribiki",
     "meaning": "할인",
-    "level": "N4",
+    "level": "N2",
     "category": "shopping",
     "example": {
       "japanese": "半額割引シールが貼ってあります。",
@@ -902,7 +902,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "さいず",
     "romaji": "saizu",
     "meaning": "사이즈, 치수",
-    "level": "N5",
+    "level": "N1",
     "category": "shopping",
     "example": {
       "japanese": "大きいサイズはありますか？",
@@ -944,7 +944,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あたためる",
     "romaji": "atatameru",
     "meaning": "데우다 (전자레인지)",
-    "level": "N4",
+    "level": "N2",
     "category": "shopping",
     "example": {
       "japanese": "お弁当を温めますか？",
@@ -958,7 +958,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "うりきれ",
     "romaji": "urikire",
     "meaning": "품절, 매진",
-    "level": "N4",
+    "level": "N2",
     "category": "shopping",
     "example": {
       "japanese": "人気商品は売り切れでした。",
@@ -1252,7 +1252,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しゅみ",
     "romaji": "shumi",
     "meaning": "취미",
-    "level": "N5",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "趣味はアニメを見ることです。",
@@ -1280,7 +1280,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "うれしい",
     "romaji": "ureshii",
     "meaning": "기쁘다",
-    "level": "N5",
+    "level": "N4",
     "category": "emotion",
     "example": {
       "japanese": "合格してとても嬉しいです！",
@@ -1308,7 +1308,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かなしい",
     "romaji": "kanashii",
     "meaning": "슬프다",
-    "level": "N5",
+    "level": "N4",
     "category": "emotion",
     "example": {
       "japanese": "映画を見て悲しくなりました。",
@@ -1322,7 +1322,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "さびしい",
     "romaji": "sabishii",
     "meaning": "외롭다, 쓸쓸하다",
-    "level": "N5",
+    "level": "N4",
     "category": "emotion",
     "example": {
       "japanese": "一人でいると寂しいです。",
@@ -1378,7 +1378,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しんぱい",
     "romaji": "shinpai",
     "meaning": "걱정",
-    "level": "N5",
+    "level": "N4",
     "category": "emotion",
     "example": {
       "japanese": "心配しないで大丈夫です。",
@@ -1434,7 +1434,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かくにん",
     "romaji": "kakunin",
     "meaning": "확인",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "メールの内容をご確認ください。",
@@ -1490,7 +1490,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しめきり",
     "romaji": "shimekiri",
     "meaning": "마감, 마감일",
-    "level": "N3",
+    "level": "N2",
     "category": "business",
     "example": {
       "japanese": "レポートの締切は明日です。",
@@ -1532,7 +1532,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あいさつ",
     "romaji": "aisatsu",
     "meaning": "인사",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "笑顔で挨拶をしましょう。",
@@ -1938,7 +1938,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "やっきょく",
     "romaji": "yakkyoku",
     "meaning": "약국",
-    "level": "N4",
+    "level": "N2",
     "category": "travel",
     "example": {
       "japanese": "近くに薬局はありますか？",
@@ -1980,7 +1980,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ねつ",
     "romaji": "netsu",
     "meaning": "열",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "熱を測ってみてください。",
@@ -2022,7 +2022,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ふんしつ",
     "romaji": "funshitsu",
     "meaning": "분실",
-    "level": "N3",
+    "level": "N1",
     "category": "travel",
     "example": {
       "japanese": "財布を紛失しました。",
@@ -2176,7 +2176,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "うどん",
     "romaji": "udon",
     "meaning": "우동",
-    "level": "N5",
+    "level": "N2",
     "category": "food",
     "example": {
       "japanese": "温かいうどんを食べました。",
@@ -2260,7 +2260,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "おもう",
     "romaji": "omou",
     "meaning": "생각하다",
-    "level": "N5",
+    "level": "N4",
     "category": "basic",
     "example": {
       "japanese": "そう思います。",
@@ -2400,7 +2400,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "とまる",
     "romaji": "tomaru",
     "meaning": "숙박하다, 묵다",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "旅館に泊まりました。",
@@ -2526,7 +2526,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "とどく",
     "romaji": "todoku",
     "meaning": "도착하다, 닿다",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "手紙が届きました。",
@@ -2540,7 +2540,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "おくる",
     "romaji": "okuru",
     "meaning": "보내다",
-    "level": "N5",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "荷物をホテルに送ります。",
@@ -2554,7 +2554,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "はらう",
     "romaji": "harau",
     "meaning": "지불하다, 내다",
-    "level": "N5",
+    "level": "N4",
     "category": "shopping",
     "example": {
       "japanese": "クレジットカードで払います。",
@@ -3086,7 +3086,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ふべん",
     "romaji": "fuben",
     "meaning": "불편함",
-    "level": "N5",
+    "level": "N4",
     "category": "basic",
     "example": {
       "japanese": "交通が少し不便です。",
@@ -3100,7 +3100,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しんせつ",
     "romaji": "shinsetsu",
     "meaning": "친절함",
-    "level": "N5",
+    "level": "N4",
     "category": "basic",
     "example": {
       "japanese": "店員さんがとても親切でした。",
@@ -3128,7 +3128,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんたん",
     "romaji": "kantan",
     "meaning": "간단함, 쉬움",
-    "level": "N5",
+    "level": "N4",
     "category": "basic",
     "example": {
       "japanese": "作り方はとても簡単です。",
@@ -3282,7 +3282,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "じんじゃ",
     "romaji": "jinja",
     "meaning": "신사",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "有名な神社でお参りをしました。",
@@ -3310,7 +3310,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しろ",
     "romaji": "shiro",
     "meaning": "성 (오사카성 등)",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "大阪城を見学しました。",
@@ -3338,7 +3338,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "どうぶつえん",
     "romaji": "doubutsuen",
     "meaning": "동물원",
-    "level": "N5",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "上野動物園でパンダを見ました。",
@@ -3618,7 +3618,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ふね",
     "romaji": "fune",
     "meaning": "배, 선박",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "船に乗って島へ渡ります。",
@@ -3632,7 +3632,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "くうこう",
     "romaji": "kuukou",
     "meaning": "공항",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "羽田空港を利用しました。",
@@ -3716,7 +3716,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "たいよう",
     "romaji": "taiyou",
     "meaning": "태양, 해",
-    "level": "N4",
+    "level": "N3",
     "category": "basic",
     "example": {
       "japanese": "太陽の光が暖かいです。",
@@ -3730,7 +3730,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "つき",
     "romaji": "tsuki",
     "meaning": "달",
-    "level": "N5",
+    "level": "N4",
     "category": "basic",
     "example": {
       "japanese": "今夜は月がとても明るい。",
@@ -3744,7 +3744,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ほし",
     "romaji": "hoshi",
     "meaning": "별",
-    "level": "N5",
+    "level": "N4",
     "category": "basic",
     "example": {
       "japanese": "夜空に星がたくさん見えます。",
@@ -3912,7 +3912,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "とうちゃく",
     "romaji": "touchaku",
     "meaning": "도착",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "到着をしてください。",
@@ -3940,7 +3940,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんこう",
     "romaji": "kankou",
     "meaning": "관광",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "観光をしてください。",
@@ -3954,7 +3954,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "りょうがえ",
     "romaji": "ryougae",
     "meaning": "환전",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "両替をしてください。",
@@ -4010,7 +4010,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんがく",
     "romaji": "kengaku",
     "meaning": "견학",
-    "level": "N4",
+    "level": "N2",
     "category": "travel",
     "example": {
       "japanese": "見学をしてください。",
@@ -4024,7 +4024,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "たいけん",
     "romaji": "taiken",
     "meaning": "체험",
-    "level": "N3",
+    "level": "N1",
     "category": "travel",
     "example": {
       "japanese": "体験をしてください。",
@@ -4052,7 +4052,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きゅうけい",
     "romaji": "kyuukei",
     "meaning": "휴식",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "休憩をしてください。",
@@ -4122,7 +4122,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "とうじょう",
     "romaji": "toujou",
     "meaning": "탑승",
-    "level": "N3",
+    "level": "N2",
     "category": "travel",
     "example": {
       "japanese": "搭乗をしてください。",
@@ -4164,7 +4164,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ざせき",
     "romaji": "zaseki",
     "meaning": "좌석",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "座席をしてください。",
@@ -4206,7 +4206,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かたみち",
     "romaji": "katamichi",
     "meaning": "편도",
-    "level": "N4",
+    "level": "N2",
     "category": "travel",
     "example": {
       "japanese": "片道をしてください。",
@@ -4220,7 +4220,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "おうふく",
     "romaji": "oufuku",
     "meaning": "왕복",
-    "level": "N4",
+    "level": "N2",
     "category": "travel",
     "example": {
       "japanese": "往復をしてください。",
@@ -4234,7 +4234,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "うんちん",
     "romaji": "unchin",
     "meaning": "운임, 요금",
-    "level": "N3",
+    "level": "N1",
     "category": "travel",
     "example": {
       "japanese": "運賃をしてください。",
@@ -4276,7 +4276,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ふつう",
     "romaji": "futsuu",
     "meaning": "보통 (각역 정차)",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "普通をしてください。",
@@ -4304,7 +4304,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しはつ",
     "romaji": "shihatsu",
     "meaning": "첫차",
-    "level": "N4",
+    "level": "N1",
     "category": "travel",
     "example": {
       "japanese": "始発をしてください。",
@@ -4346,7 +4346,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "じこくひょう",
     "romaji": "jikokuhyou",
     "meaning": "시간표",
-    "level": "N4",
+    "level": "N1",
     "category": "travel",
     "example": {
       "japanese": "時刻表をしてください。",
@@ -4556,7 +4556,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "よてい",
     "romaji": "よてい",
     "meaning": "예정, 계획",
-    "level": "N5",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "予定が重要です。",
@@ -4570,7 +4570,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きぶん",
     "romaji": "きぶん",
     "meaning": "기분",
-    "level": "N5",
+    "level": "N4",
     "category": "emotion",
     "example": {
       "japanese": "気分が重要です。",
@@ -4584,7 +4584,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きもち",
     "romaji": "きもち",
     "meaning": "마음, 느낌",
-    "level": "N5",
+    "level": "N4",
     "category": "emotion",
     "example": {
       "japanese": "気持ちが重要です。",
@@ -4654,7 +4654,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けいざい",
     "romaji": "けいざい",
     "meaning": "경제",
-    "level": "N3",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "経済が重要です。",
@@ -4696,7 +4696,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せかい",
     "romaji": "せかい",
     "meaning": "세계",
-    "level": "N5",
+    "level": "N4",
     "category": "basic",
     "example": {
       "japanese": "世界が重要です。",
@@ -4710,7 +4710,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "へいわ",
     "romaji": "へいわ",
     "meaning": "평화",
-    "level": "N4",
+    "level": "N3",
     "category": "basic",
     "example": {
       "japanese": "平和が重要です。",
@@ -4752,7 +4752,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しぜん",
     "romaji": "しぜん",
     "meaning": "자연",
-    "level": "N4",
+    "level": "N3",
     "category": "basic",
     "example": {
       "japanese": "自然が重要です。",
@@ -4766,7 +4766,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ちきゅう",
     "romaji": "ちきゅう",
     "meaning": "지구",
-    "level": "N4",
+    "level": "N3",
     "category": "basic",
     "example": {
       "japanese": "地球が重要です。",
@@ -4780,7 +4780,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "くうき",
     "romaji": "くうき",
     "meaning": "공기, 분위기",
-    "level": "N5",
+    "level": "N4",
     "category": "basic",
     "example": {
       "japanese": "空気が重要です。",
@@ -4794,7 +4794,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "おんど",
     "romaji": "おんど",
     "meaning": "온도",
-    "level": "N4",
+    "level": "N3",
     "category": "basic",
     "example": {
       "japanese": "温度が重要です。",
@@ -4808,7 +4808,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しつど",
     "romaji": "しつど",
     "meaning": "습도",
-    "level": "N3",
+    "level": "N2",
     "category": "basic",
     "example": {
       "japanese": "湿度が重要です。",
@@ -4822,7 +4822,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "たいふう",
     "romaji": "たいふう",
     "meaning": "태풍",
-    "level": "N5",
+    "level": "N4",
     "category": "basic",
     "example": {
       "japanese": "台風が重要です。",
@@ -4850,7 +4850,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "つなみ",
     "romaji": "つなみ",
     "meaning": "쓰나미",
-    "level": "N3",
+    "level": "N1",
     "category": "travel",
     "example": {
       "japanese": "津波が重要です。",
@@ -4864,7 +4864,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ひなん",
     "romaji": "ひなん",
     "meaning": "피난",
-    "level": "N3",
+    "level": "N1",
     "category": "travel",
     "example": {
       "japanese": "避難が重要です。",
@@ -4934,7 +4934,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しょうぼうしょ",
     "romaji": "しょうぼうしょ",
     "meaning": "소방서",
-    "level": "N4",
+    "level": "N2",
     "category": "travel",
     "example": {
       "japanese": "消防署が重要です。",
@@ -4962,7 +4962,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "たいしかん",
     "romaji": "たいしかん",
     "meaning": "대사관",
-    "level": "N4",
+    "level": "N5",
     "category": "travel",
     "example": {
       "japanese": "大使館が重要です。",
@@ -5004,7 +5004,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ぜいかん",
     "romaji": "ぜいかん",
     "meaning": "세관",
-    "level": "N3",
+    "level": "N2",
     "category": "travel",
     "example": {
       "japanese": "税関が重要です。",
@@ -5186,7 +5186,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "わいん",
     "romaji": "wain",
     "meaning": "와인",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "ワインを食べます。",
@@ -5242,7 +5242,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かくてる",
     "romaji": "kakuteru",
     "meaning": "칵테일",
-    "level": "N5",
+    "level": "N1",
     "category": "food",
     "example": {
       "japanese": "カクテルを食べます。",
@@ -5256,7 +5256,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "じゅーす",
     "romaji": "juusu",
     "meaning": "주스",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "ジュースを食べます。",
@@ -5312,7 +5312,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "でざーと",
     "romaji": "dezaato",
     "meaning": "디저트",
-    "level": "N5",
+    "level": "N1",
     "category": "food",
     "example": {
       "japanese": "デザートを食べます。",
@@ -5326,7 +5326,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けーき",
     "romaji": "keeki",
     "meaning": "케이크",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "ケーキを食べます。",
@@ -5340,7 +5340,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あいすくりーむ",
     "romaji": "aisukuriimu",
     "meaning": "아이스크림",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "アイスクリームを食べます。",
@@ -5382,7 +5382,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "さらだ",
     "romaji": "sarada",
     "meaning": "샐러드",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "サラダを食べます。",
@@ -5396,7 +5396,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "すーぷ",
     "romaji": "suupu",
     "meaning": "수프, 국물",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "スープを食べます。",
@@ -5634,7 +5634,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "おく",
     "romaji": "oku",
     "meaning": "1억",
-    "level": "N5",
+    "level": "N4",
     "category": "basic",
     "example": {
       "japanese": "億つあります。",
@@ -5648,7 +5648,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ちょう",
     "romaji": "chou",
     "meaning": "1조",
-    "level": "N5",
+    "level": "N1",
     "category": "basic",
     "example": {
       "japanese": "兆つあります。",
@@ -5746,7 +5746,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ゆか",
     "romaji": "yuka",
     "meaning": "바닥",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "これは床です。",
@@ -5760,7 +5760,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "てんじょう",
     "romaji": "tenjou",
     "meaning": "천장",
-    "level": "N3",
+    "level": "N1",
     "category": "daily",
     "example": {
       "japanese": "これは天井です。",
@@ -5802,7 +5802,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "えすかれーたー",
     "romaji": "esukareetaa",
     "meaning": "에스컬레이터",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "これはエスカレーターです。",
@@ -5858,7 +5858,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せんぷうき",
     "romaji": "senpuuki",
     "meaning": "선풍기",
-    "level": "N4",
+    "level": "N2",
     "category": "daily",
     "example": {
       "japanese": "これは扇風機です。",
@@ -5942,7 +5942,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ぱそこん",
     "romaji": "pasokon",
     "meaning": "컴퓨터 (PC)",
-    "level": "N5",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "これはパソコンです。",
@@ -6012,7 +6012,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "こんせんと",
     "romaji": "konsento",
     "meaning": "콘센트",
-    "level": "N4",
+    "level": "N2",
     "category": "travel",
     "example": {
       "japanese": "これはコンセントです。",
@@ -6082,7 +6082,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あるばむ",
     "romaji": "arubamu",
     "meaning": "앨범",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "これはアルバムです。",
@@ -6096,7 +6096,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "てちょう",
     "romaji": "techou",
     "meaning": "수첩",
-    "level": "N5",
+    "level": "N2",
     "category": "daily",
     "example": {
       "japanese": "これは手帳です。",
@@ -6152,7 +6152,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けしごむ",
     "romaji": "keshigomu",
     "meaning": "지우개",
-    "level": "N5",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "これは消しゴムです。",
@@ -6236,7 +6236,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きょうかしょ",
     "romaji": "kyoukasho",
     "meaning": "교과서",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "これは教科書です。",
@@ -6264,7 +6264,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しけん",
     "romaji": "shiken",
     "meaning": "시험",
-    "level": "N5",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "これは試験です。",
@@ -6292,7 +6292,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "こたえ",
     "romaji": "kotae",
     "meaning": "대답, 정답",
-    "level": "N5",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "これは答えです。",
@@ -6488,7 +6488,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "こうはい",
     "romaji": "kouhai",
     "meaning": "후배",
-    "level": "N4",
+    "level": "N2",
     "category": "daily",
     "example": {
       "japanese": "これは後輩です。",
@@ -6502,7 +6502,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けいかく",
     "romaji": "けいかく",
     "meaning": "계획",
-    "level": "N3",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この計画について考えます。",
@@ -6516,7 +6516,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "りょこう",
     "romaji": "りょこう",
     "meaning": "여행",
-    "level": "N4",
+    "level": "N5",
     "category": "daily",
     "example": {
       "japanese": "この旅行について考えます。",
@@ -6530,7 +6530,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きろく",
     "romaji": "きろく",
     "meaning": "기록",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この記録について考えます。",
@@ -6572,7 +6572,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かつどう",
     "romaji": "かつどう",
     "meaning": "활동",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この活動について考えます。",
@@ -6600,7 +6600,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きぼう",
     "romaji": "きぼう",
     "meaning": "희망",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この希望について考えます。",
@@ -6614,7 +6614,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいこう",
     "romaji": "せいこう",
     "meaning": "성공",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この成功について考えます。",
@@ -6628,7 +6628,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しっぱい",
     "romaji": "しっぱい",
     "meaning": "실패",
-    "level": "N3",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この失敗について考えます。",
@@ -6642,7 +6642,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんしゃ",
     "romaji": "かんしゃ",
     "meaning": "감사",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この感謝について考えます。",
@@ -6656,7 +6656,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "そんけい",
     "romaji": "そんけい",
     "meaning": "존경",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この尊敬について考えます。",
@@ -6684,7 +6684,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ゆうじょう",
     "romaji": "ゆうじょう",
     "meaning": "우정",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この友情について考えます。",
@@ -6698,7 +6698,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんけい",
     "romaji": "かんけい",
     "meaning": "관계",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この関係について考えます。",
@@ -6740,7 +6740,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "りゆう",
     "romaji": "りゆう",
     "meaning": "이유",
-    "level": "N5",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この理由について考えます。",
@@ -6768,7 +6768,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "もくひょう",
     "romaji": "もくひょう",
     "meaning": "목표",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この目標について考えます。",
@@ -6782,7 +6782,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "いけん",
     "romaji": "いけん",
     "meaning": "의견",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この意見について考えます。",
@@ -6810,7 +6810,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんじょう",
     "romaji": "かんじょう",
     "meaning": "감정",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この感情について考えます。",
@@ -6824,7 +6824,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ひょうげん",
     "romaji": "ひょうげん",
     "meaning": "표현",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この表現について考えます。",
@@ -6838,7 +6838,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せつめい",
     "romaji": "せつめい",
     "meaning": "설명",
-    "level": "N3",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この説明について考えます。",
@@ -6866,7 +6866,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しょうかい",
     "romaji": "しょうかい",
     "meaning": "소개",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この紹介について考えます。",
@@ -6908,7 +6908,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ほうもん",
     "romaji": "ほうもん",
     "meaning": "방문",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この訪問について考えます。",
@@ -6922,7 +6922,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんがく",
     "romaji": "けんがく",
     "meaning": "견학",
-    "level": "N3",
+    "level": "N2",
     "category": "food",
     "example": {
       "japanese": "この見学について考えます。",
@@ -6992,7 +6992,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "とうちゃく",
     "romaji": "とうちゃく",
     "meaning": "도착",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この到着について考えます。",
@@ -7020,7 +7020,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "にゅうじょう",
     "romaji": "にゅうじょう",
     "meaning": "입장",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この入場について考えます。",
@@ -7062,7 +7062,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きょか",
     "romaji": "きょか",
     "meaning": "허가",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この許可について考えます。",
@@ -7076,7 +7076,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "じゆう",
     "romaji": "じゆう",
     "meaning": "자유",
-    "level": "N5",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この自由について考えます。",
@@ -7090,7 +7090,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "べんり",
     "romaji": "べんり",
     "meaning": "편리",
-    "level": "N3",
+    "level": "N5",
     "category": "food",
     "example": {
       "japanese": "この便利について考えます。",
@@ -7104,7 +7104,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かいてき",
     "romaji": "かいてき",
     "meaning": "쾌적",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この快適について考えます。",
@@ -7118,7 +7118,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しんせん",
     "romaji": "しんせん",
     "meaning": "신선",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この新鮮について考えます。",
@@ -7146,7 +7146,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きれい",
     "romaji": "きれい",
     "meaning": "예쁨, 깨끗함",
-    "level": "N4",
+    "level": "N5",
     "category": "food",
     "example": {
       "japanese": "この綺麗について考えます。",
@@ -7160,7 +7160,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ほうふ",
     "romaji": "ほうふ",
     "meaning": "풍부",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この豊富について考えます。",
@@ -7188,7 +7188,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "じゅうよう",
     "romaji": "じゅうよう",
     "meaning": "중요",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この重要について考えます。",
@@ -7202,7 +7202,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けいかく",
     "romaji": "けいかく",
     "meaning": "계획",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この計画について考えます。",
@@ -7216,7 +7216,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "りょこう",
     "romaji": "りょこう",
     "meaning": "여행",
-    "level": "N3",
+    "level": "N5",
     "category": "business",
     "example": {
       "japanese": "この旅行について考えます。",
@@ -7230,7 +7230,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きろく",
     "romaji": "きろく",
     "meaning": "기록",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この記録について考えます。",
@@ -7244,7 +7244,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "はっけん",
     "romaji": "はっけん",
     "meaning": "발견",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この発見について考えます。",
@@ -7258,7 +7258,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいかつ",
     "romaji": "せいかつ",
     "meaning": "생활",
-    "level": "N3",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この生活について考えます。",
@@ -7272,7 +7272,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かつどう",
     "romaji": "かつどう",
     "meaning": "활동",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この活動について考えます。",
@@ -7286,7 +7286,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "こうどう",
     "romaji": "こうどう",
     "meaning": "행동",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この行動について考えます。",
@@ -7314,7 +7314,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいこう",
     "romaji": "せいこう",
     "meaning": "성공",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この成功について考えます。",
@@ -7328,7 +7328,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しっぱい",
     "romaji": "しっぱい",
     "meaning": "실패",
-    "level": "N5",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この失敗について考えます。",
@@ -7356,7 +7356,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "そんけい",
     "romaji": "そんけい",
     "meaning": "존경",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この尊敬について考えます。",
@@ -7370,7 +7370,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あいじょう",
     "romaji": "あいじょう",
     "meaning": "애정",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この愛情について考えます。",
@@ -7412,7 +7412,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けっか",
     "romaji": "けっか",
     "meaning": "결과",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この結果について考えます。",
@@ -7426,7 +7426,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "げんいん",
     "romaji": "げんいん",
     "meaning": "원인",
-    "level": "N3",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この原因について考えます。",
@@ -7454,7 +7454,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "もくてき",
     "romaji": "もくてき",
     "meaning": "목적",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この目的について考えます。",
@@ -7496,7 +7496,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんがえ",
     "romaji": "かんがえ",
     "meaning": "생각",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この考えについて考えます。",
@@ -7524,7 +7524,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ひょうげん",
     "romaji": "ひょうげん",
     "meaning": "표현",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この表現について考えます。",
@@ -7538,7 +7538,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せつめい",
     "romaji": "せつめい",
     "meaning": "설명",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この説明について考えます。",
@@ -7552,7 +7552,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あんない",
     "romaji": "あんない",
     "meaning": "안내",
-    "level": "N3",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この案内について考えます。",
@@ -7580,7 +7580,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんげい",
     "romaji": "かんげい",
     "meaning": "환영",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この歓迎について考えます。",
@@ -7594,7 +7594,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しょうたい",
     "romaji": "しょうたい",
     "meaning": "초대",
-    "level": "N3",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この招待について考えます。",
@@ -7608,7 +7608,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ほうもん",
     "romaji": "ほうもん",
     "meaning": "방문",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この訪問について考えます。",
@@ -7622,7 +7622,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんがく",
     "romaji": "けんがく",
     "meaning": "견학",
-    "level": "N5",
+    "level": "N2",
     "category": "travel",
     "example": {
       "japanese": "この見学について考えます。",
@@ -7636,7 +7636,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんぶつ",
     "romaji": "けんぶつ",
     "meaning": "구경",
-    "level": "N3",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この見物について考えます。",
@@ -7664,7 +7664,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "いどう",
     "romaji": "いどう",
     "meaning": "이동",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この移動について考えます。",
@@ -7678,7 +7678,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しゅっぱつ",
     "romaji": "しゅっぱつ",
     "meaning": "출발",
-    "level": "N3",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この出発について考えます。",
@@ -7692,7 +7692,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "とうちゃく",
     "romaji": "とうちゃく",
     "meaning": "도착",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この到着について考えます。",
@@ -7706,7 +7706,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "つうか",
     "romaji": "つうか",
     "meaning": "통과",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この通過について考えます。",
@@ -7748,7 +7748,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きんし",
     "romaji": "きんし",
     "meaning": "금지",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この禁止について考えます。",
@@ -7818,7 +7818,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しんせん",
     "romaji": "しんせん",
     "meaning": "신선",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この新鮮について考えます。",
@@ -7832,7 +7832,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいけつ",
     "romaji": "せいけつ",
     "meaning": "청결",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この清潔について考えます。",
@@ -7846,7 +7846,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きれい",
     "romaji": "きれい",
     "meaning": "예쁨, 깨끗함",
-    "level": "N3",
+    "level": "N5",
     "category": "travel",
     "example": {
       "japanese": "この綺麗について考えます。",
@@ -7860,7 +7860,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ほうふ",
     "romaji": "ほうふ",
     "meaning": "풍부",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この豊富について考えます。",
@@ -7874,7 +7874,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きちょう",
     "romaji": "きちょう",
     "meaning": "귀중",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この貴重について考えます。",
@@ -7944,7 +7944,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "はっけん",
     "romaji": "はっけん",
     "meaning": "발견",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この発見について考えます。",
@@ -7958,7 +7958,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいかつ",
     "romaji": "せいかつ",
     "meaning": "생활",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この生活について考えます。",
@@ -7986,7 +7986,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "こうどう",
     "romaji": "こうどう",
     "meaning": "행동",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この行動について考えます。",
@@ -8000,7 +8000,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きぼう",
     "romaji": "きぼう",
     "meaning": "희망",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この希望について考えます。",
@@ -8042,7 +8042,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんしゃ",
     "romaji": "かんしゃ",
     "meaning": "감사",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この感謝について考えます。",
@@ -8070,7 +8070,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あいじょう",
     "romaji": "あいじょう",
     "meaning": "애정",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この愛情について考えます。",
@@ -8084,7 +8084,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ゆうじょう",
     "romaji": "ゆうじょう",
     "meaning": "우정",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この友情について考えます。",
@@ -8098,7 +8098,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんけい",
     "romaji": "かんけい",
     "meaning": "관계",
-    "level": "N3",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この関係について考えます。",
@@ -8112,7 +8112,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けっか",
     "romaji": "けっか",
     "meaning": "결과",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この結果について考えます。",
@@ -8126,7 +8126,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "げんいん",
     "romaji": "げんいん",
     "meaning": "원인",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この原因について考えます。",
@@ -8140,7 +8140,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "りゆう",
     "romaji": "りゆう",
     "meaning": "이유",
-    "level": "N3",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この理由について考えます。",
@@ -8154,7 +8154,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "もくてき",
     "romaji": "もくてき",
     "meaning": "목적",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この目的について考えます。",
@@ -8168,7 +8168,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "もくひょう",
     "romaji": "もくひょう",
     "meaning": "목표",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この目標について考えます。",
@@ -8182,7 +8182,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "いけん",
     "romaji": "いけん",
     "meaning": "의견",
-    "level": "N3",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この意見について考えます。",
@@ -8196,7 +8196,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんがえ",
     "romaji": "かんがえ",
     "meaning": "생각",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この考えについて考えます。",
@@ -8210,7 +8210,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんじょう",
     "romaji": "かんじょう",
     "meaning": "감정",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この感情について考えます。",
@@ -8252,7 +8252,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あんない",
     "romaji": "あんない",
     "meaning": "안내",
-    "level": "N5",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この案内について考えます。",
@@ -8266,7 +8266,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しょうかい",
     "romaji": "しょうかい",
     "meaning": "소개",
-    "level": "N3",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この紹介について考えます。",
@@ -8280,7 +8280,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんげい",
     "romaji": "かんげい",
     "meaning": "환영",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この歓迎について考えます。",
@@ -8294,7 +8294,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しょうたい",
     "romaji": "しょうたい",
     "meaning": "초대",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この招待について考えます。",
@@ -8322,7 +8322,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんがく",
     "romaji": "けんがく",
     "meaning": "견학",
-    "level": "N4",
+    "level": "N2",
     "category": "food",
     "example": {
       "japanese": "この見学について考えます。",
@@ -8336,7 +8336,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんぶつ",
     "romaji": "けんぶつ",
     "meaning": "구경",
-    "level": "N5",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この見物について考えます。",
@@ -8364,7 +8364,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "いどう",
     "romaji": "いどう",
     "meaning": "이동",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この移動について考えます。",
@@ -8378,7 +8378,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しゅっぱつ",
     "romaji": "しゅっぱつ",
     "meaning": "출발",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この出発について考えます。",
@@ -8406,7 +8406,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "つうか",
     "romaji": "つうか",
     "meaning": "통과",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この通過について考えます。",
@@ -8420,7 +8420,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "にゅうじょう",
     "romaji": "にゅうじょう",
     "meaning": "입장",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この入場について考えます。",
@@ -8448,7 +8448,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きんし",
     "romaji": "きんし",
     "meaning": "금지",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この禁止について考えます。",
@@ -8462,7 +8462,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きょか",
     "romaji": "きょか",
     "meaning": "허가",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この許可について考えます。",
@@ -8476,7 +8476,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "じゆう",
     "romaji": "じゆう",
     "meaning": "자유",
-    "level": "N3",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この自由について考えます。",
@@ -8490,7 +8490,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "べんり",
     "romaji": "べんり",
     "meaning": "편리",
-    "level": "N4",
+    "level": "N5",
     "category": "food",
     "example": {
       "japanese": "この便利について考えます。",
@@ -8504,7 +8504,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かいてき",
     "romaji": "かいてき",
     "meaning": "쾌적",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この快適について考えます。",
@@ -8532,7 +8532,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいけつ",
     "romaji": "せいけつ",
     "meaning": "청결",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この清潔について考えます。",
@@ -8574,7 +8574,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きちょう",
     "romaji": "きちょう",
     "meaning": "귀중",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この貴重について考えます。",
@@ -8588,7 +8588,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "じゅうよう",
     "romaji": "じゅうよう",
     "meaning": "중요",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この重要について考えます。",
@@ -8602,7 +8602,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けいかく",
     "romaji": "けいかく",
     "meaning": "계획",
-    "level": "N3",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この計画について考えます。",
@@ -8616,7 +8616,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "りょこう",
     "romaji": "りょこう",
     "meaning": "여행",
-    "level": "N4",
+    "level": "N5",
     "category": "business",
     "example": {
       "japanese": "この旅行について考えます。",
@@ -8630,7 +8630,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きろく",
     "romaji": "きろく",
     "meaning": "기록",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この記録について考えます。",
@@ -8672,7 +8672,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かつどう",
     "romaji": "かつどう",
     "meaning": "활동",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この活動について考えます。",
@@ -8700,7 +8700,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きぼう",
     "romaji": "きぼう",
     "meaning": "희망",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この希望について考えます。",
@@ -8714,7 +8714,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいこう",
     "romaji": "せいこう",
     "meaning": "성공",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この成功について考えます。",
@@ -8728,7 +8728,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しっぱい",
     "romaji": "しっぱい",
     "meaning": "실패",
-    "level": "N3",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この失敗について考えます。",
@@ -8742,7 +8742,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんしゃ",
     "romaji": "かんしゃ",
     "meaning": "감사",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この感謝について考えます。",
@@ -8756,7 +8756,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "そんけい",
     "romaji": "そんけい",
     "meaning": "존경",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この尊敬について考えます。",
@@ -8784,7 +8784,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ゆうじょう",
     "romaji": "ゆうじょう",
     "meaning": "우정",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この友情について考えます。",
@@ -8798,7 +8798,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんけい",
     "romaji": "かんけい",
     "meaning": "관계",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この関係について考えます。",
@@ -8840,7 +8840,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "りゆう",
     "romaji": "りゆう",
     "meaning": "이유",
-    "level": "N5",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この理由について考えます。",
@@ -8868,7 +8868,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "もくひょう",
     "romaji": "もくひょう",
     "meaning": "목표",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この目標について考えます。",
@@ -8882,7 +8882,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "いけん",
     "romaji": "いけん",
     "meaning": "의견",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この意見について考えます。",
@@ -8910,7 +8910,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんじょう",
     "romaji": "かんじょう",
     "meaning": "감정",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この感情について考えます。",
@@ -8924,7 +8924,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ひょうげん",
     "romaji": "ひょうげん",
     "meaning": "표현",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この表現について考えます。",
@@ -8938,7 +8938,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せつめい",
     "romaji": "せつめい",
     "meaning": "설명",
-    "level": "N3",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この説明について考えます。",
@@ -8966,7 +8966,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しょうかい",
     "romaji": "しょうかい",
     "meaning": "소개",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この紹介について考えます。",
@@ -9008,7 +9008,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ほうもん",
     "romaji": "ほうもん",
     "meaning": "방문",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この訪問について考えます。",
@@ -9022,7 +9022,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんがく",
     "romaji": "けんがく",
     "meaning": "견학",
-    "level": "N3",
+    "level": "N2",
     "category": "travel",
     "example": {
       "japanese": "この見学について考えます。",
@@ -9092,7 +9092,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "とうちゃく",
     "romaji": "とうちゃく",
     "meaning": "도착",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この到着について考えます。",
@@ -9120,7 +9120,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "にゅうじょう",
     "romaji": "にゅうじょう",
     "meaning": "입장",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この入場について考えます。",
@@ -9162,7 +9162,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きょか",
     "romaji": "きょか",
     "meaning": "허가",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この許可について考えます。",
@@ -9176,7 +9176,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "じゆう",
     "romaji": "じゆう",
     "meaning": "자유",
-    "level": "N5",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この自由について考えます。",
@@ -9190,7 +9190,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "べんり",
     "romaji": "べんり",
     "meaning": "편리",
-    "level": "N3",
+    "level": "N5",
     "category": "travel",
     "example": {
       "japanese": "この便利について考えます。",
@@ -9204,7 +9204,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かいてき",
     "romaji": "かいてき",
     "meaning": "쾌적",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この快適について考えます。",
@@ -9218,7 +9218,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しんせん",
     "romaji": "しんせん",
     "meaning": "신선",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この新鮮について考えます。",
@@ -9246,7 +9246,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きれい",
     "romaji": "きれい",
     "meaning": "예쁨, 깨끗함",
-    "level": "N4",
+    "level": "N5",
     "category": "travel",
     "example": {
       "japanese": "この綺麗について考えます。",
@@ -9260,7 +9260,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ほうふ",
     "romaji": "ほうふ",
     "meaning": "풍부",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この豊富について考えます。",
@@ -9288,7 +9288,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "じゅうよう",
     "romaji": "じゅうよう",
     "meaning": "중요",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この重要について考えます。",
@@ -9302,7 +9302,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けいかく",
     "romaji": "けいかく",
     "meaning": "계획",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この計画について考えます。",
@@ -9316,7 +9316,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "りょこう",
     "romaji": "りょこう",
     "meaning": "여행",
-    "level": "N3",
+    "level": "N5",
     "category": "daily",
     "example": {
       "japanese": "この旅行について考えます。",
@@ -9330,7 +9330,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きろく",
     "romaji": "きろく",
     "meaning": "기록",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この記録について考えます。",
@@ -9344,7 +9344,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "はっけん",
     "romaji": "はっけん",
     "meaning": "발견",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この発見について考えます。",
@@ -9358,7 +9358,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいかつ",
     "romaji": "せいかつ",
     "meaning": "생활",
-    "level": "N3",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この生活について考えます。",
@@ -9372,7 +9372,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かつどう",
     "romaji": "かつどう",
     "meaning": "활동",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この活動について考えます。",
@@ -9386,7 +9386,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "こうどう",
     "romaji": "こうどう",
     "meaning": "행동",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この行動について考えます。",
@@ -9414,7 +9414,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいこう",
     "romaji": "せいこう",
     "meaning": "성공",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この成功について考えます。",
@@ -9428,7 +9428,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しっぱい",
     "romaji": "しっぱい",
     "meaning": "실패",
-    "level": "N5",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この失敗について考えます。",
@@ -9456,7 +9456,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "そんけい",
     "romaji": "そんけい",
     "meaning": "존경",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この尊敬について考えます。",
@@ -9470,7 +9470,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あいじょう",
     "romaji": "あいじょう",
     "meaning": "애정",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この愛情について考えます。",
@@ -9512,7 +9512,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けっか",
     "romaji": "けっか",
     "meaning": "결과",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この結果について考えます。",
@@ -9526,7 +9526,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "げんいん",
     "romaji": "げんいん",
     "meaning": "원인",
-    "level": "N3",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この原因について考えます。",
@@ -9554,7 +9554,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "もくてき",
     "romaji": "もくてき",
     "meaning": "목적",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この目的について考えます。",
@@ -9596,7 +9596,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんがえ",
     "romaji": "かんがえ",
     "meaning": "생각",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この考えについて考えます。",
@@ -9624,7 +9624,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ひょうげん",
     "romaji": "ひょうげん",
     "meaning": "표현",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この表現について考えます。",
@@ -9638,7 +9638,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せつめい",
     "romaji": "せつめい",
     "meaning": "설명",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この説明について考えます。",
@@ -9652,7 +9652,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あんない",
     "romaji": "あんない",
     "meaning": "안내",
-    "level": "N3",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この案内について考えます。",
@@ -9680,7 +9680,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんげい",
     "romaji": "かんげい",
     "meaning": "환영",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この歓迎について考えます。",
@@ -9694,7 +9694,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しょうたい",
     "romaji": "しょうたい",
     "meaning": "초대",
-    "level": "N3",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この招待について考えます。",
@@ -9708,7 +9708,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ほうもん",
     "romaji": "ほうもん",
     "meaning": "방문",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この訪問について考えます。",
@@ -9722,7 +9722,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんがく",
     "romaji": "けんがく",
     "meaning": "견학",
-    "level": "N5",
+    "level": "N2",
     "category": "food",
     "example": {
       "japanese": "この見学について考えます。",
@@ -9736,7 +9736,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんぶつ",
     "romaji": "けんぶつ",
     "meaning": "구경",
-    "level": "N3",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この見物について考えます。",
@@ -9764,7 +9764,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "いどう",
     "romaji": "いどう",
     "meaning": "이동",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この移動について考えます。",
@@ -9778,7 +9778,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しゅっぱつ",
     "romaji": "しゅっぱつ",
     "meaning": "출발",
-    "level": "N3",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この出発について考えます。",
@@ -9792,7 +9792,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "とうちゃく",
     "romaji": "とうちゃく",
     "meaning": "도착",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この到着について考えます。",
@@ -9806,7 +9806,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "つうか",
     "romaji": "つうか",
     "meaning": "통과",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この通過について考えます。",
@@ -9848,7 +9848,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きんし",
     "romaji": "きんし",
     "meaning": "금지",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この禁止について考えます。",
@@ -9918,7 +9918,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しんせん",
     "romaji": "しんせん",
     "meaning": "신선",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この新鮮について考えます。",
@@ -9932,7 +9932,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいけつ",
     "romaji": "せいけつ",
     "meaning": "청결",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この清潔について考えます。",
@@ -9946,7 +9946,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きれい",
     "romaji": "きれい",
     "meaning": "예쁨, 깨끗함",
-    "level": "N3",
+    "level": "N5",
     "category": "food",
     "example": {
       "japanese": "この綺麗について考えます。",
@@ -9960,7 +9960,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ほうふ",
     "romaji": "ほうふ",
     "meaning": "풍부",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この豊富について考えます。",
@@ -9974,7 +9974,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きちょう",
     "romaji": "きちょう",
     "meaning": "귀중",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この貴重について考えます。",
@@ -10044,7 +10044,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "はっけん",
     "romaji": "はっけん",
     "meaning": "발견",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この発見について考えます。",
@@ -10058,7 +10058,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいかつ",
     "romaji": "せいかつ",
     "meaning": "생활",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この生活について考えます。",
@@ -10086,7 +10086,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "こうどう",
     "romaji": "こうどう",
     "meaning": "행동",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この行動について考えます。",
@@ -10100,7 +10100,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きぼう",
     "romaji": "きぼう",
     "meaning": "희망",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この希望について考えます。",
@@ -10142,7 +10142,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんしゃ",
     "romaji": "かんしゃ",
     "meaning": "감사",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この感謝について考えます。",
@@ -10170,7 +10170,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あいじょう",
     "romaji": "あいじょう",
     "meaning": "애정",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この愛情について考えます。",
@@ -10184,7 +10184,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ゆうじょう",
     "romaji": "ゆうじょう",
     "meaning": "우정",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この友情について考えます。",
@@ -10198,7 +10198,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんけい",
     "romaji": "かんけい",
     "meaning": "관계",
-    "level": "N3",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この関係について考えます。",
@@ -10212,7 +10212,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けっか",
     "romaji": "けっか",
     "meaning": "결과",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この結果について考えます。",
@@ -10226,7 +10226,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "げんいん",
     "romaji": "げんいん",
     "meaning": "원인",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この原因について考えます。",
@@ -10240,7 +10240,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "りゆう",
     "romaji": "りゆう",
     "meaning": "이유",
-    "level": "N3",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この理由について考えます。",
@@ -10254,7 +10254,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "もくてき",
     "romaji": "もくてき",
     "meaning": "목적",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この目的について考えます。",
@@ -10268,7 +10268,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "もくひょう",
     "romaji": "もくひょう",
     "meaning": "목표",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この目標について考えます。",
@@ -10282,7 +10282,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "いけん",
     "romaji": "いけん",
     "meaning": "의견",
-    "level": "N3",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この意見について考えます。",
@@ -10296,7 +10296,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんがえ",
     "romaji": "かんがえ",
     "meaning": "생각",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この考えについて考えます。",
@@ -10310,7 +10310,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんじょう",
     "romaji": "かんじょう",
     "meaning": "감정",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この感情について考えます。",
@@ -10352,7 +10352,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あんない",
     "romaji": "あんない",
     "meaning": "안내",
-    "level": "N5",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この案内について考えます。",
@@ -10366,7 +10366,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しょうかい",
     "romaji": "しょうかい",
     "meaning": "소개",
-    "level": "N3",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この紹介について考えます。",
@@ -10380,7 +10380,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんげい",
     "romaji": "かんげい",
     "meaning": "환영",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この歓迎について考えます。",
@@ -10394,7 +10394,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しょうたい",
     "romaji": "しょうたい",
     "meaning": "초대",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この招待について考えます。",
@@ -10422,7 +10422,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんがく",
     "romaji": "けんがく",
     "meaning": "견학",
-    "level": "N4",
+    "level": "N2",
     "category": "travel",
     "example": {
       "japanese": "この見学について考えます。",
@@ -10436,7 +10436,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんぶつ",
     "romaji": "けんぶつ",
     "meaning": "구경",
-    "level": "N5",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この見物について考えます。",
@@ -10464,7 +10464,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "いどう",
     "romaji": "いどう",
     "meaning": "이동",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この移動について考えます。",
@@ -10478,7 +10478,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しゅっぱつ",
     "romaji": "しゅっぱつ",
     "meaning": "출발",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この出発について考えます。",
@@ -10506,7 +10506,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "つうか",
     "romaji": "つうか",
     "meaning": "통과",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この通過について考えます。",
@@ -10520,7 +10520,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "にゅうじょう",
     "romaji": "にゅうじょう",
     "meaning": "입장",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この入場について考えます。",
@@ -10548,7 +10548,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きんし",
     "romaji": "きんし",
     "meaning": "금지",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この禁止について考えます。",
@@ -10562,7 +10562,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きょか",
     "romaji": "きょか",
     "meaning": "허가",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この許可について考えます。",
@@ -10576,7 +10576,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "じゆう",
     "romaji": "じゆう",
     "meaning": "자유",
-    "level": "N3",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この自由について考えます。",
@@ -10590,7 +10590,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "べんり",
     "romaji": "べんり",
     "meaning": "편리",
-    "level": "N4",
+    "level": "N5",
     "category": "travel",
     "example": {
       "japanese": "この便利について考えます。",
@@ -10604,7 +10604,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かいてき",
     "romaji": "かいてき",
     "meaning": "쾌적",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この快適について考えます。",
@@ -10632,7 +10632,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいけつ",
     "romaji": "せいけつ",
     "meaning": "청결",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この清潔について考えます。",
@@ -10674,7 +10674,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きちょう",
     "romaji": "きちょう",
     "meaning": "귀중",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この貴重について考えます。",
@@ -10688,7 +10688,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "じゅうよう",
     "romaji": "じゅうよう",
     "meaning": "중요",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この重要について考えます。",
@@ -10702,7 +10702,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けいかく",
     "romaji": "けいかく",
     "meaning": "계획",
-    "level": "N3",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この計画について考えます。",
@@ -10716,7 +10716,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "りょこう",
     "romaji": "りょこう",
     "meaning": "여행",
-    "level": "N4",
+    "level": "N5",
     "category": "daily",
     "example": {
       "japanese": "この旅行について考えます。",
@@ -10730,7 +10730,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きろく",
     "romaji": "きろく",
     "meaning": "기록",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この記録について考えます。",
@@ -10772,7 +10772,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かつどう",
     "romaji": "かつどう",
     "meaning": "활동",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この活動について考えます。",
@@ -10800,7 +10800,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きぼう",
     "romaji": "きぼう",
     "meaning": "희망",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この希望について考えます。",
@@ -10814,7 +10814,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいこう",
     "romaji": "せいこう",
     "meaning": "성공",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この成功について考えます。",
@@ -10828,7 +10828,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しっぱい",
     "romaji": "しっぱい",
     "meaning": "실패",
-    "level": "N3",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この失敗について考えます。",
@@ -10842,7 +10842,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんしゃ",
     "romaji": "かんしゃ",
     "meaning": "감사",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この感謝について考えます。",
@@ -10856,7 +10856,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "そんけい",
     "romaji": "そんけい",
     "meaning": "존경",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この尊敬について考えます。",
@@ -10884,7 +10884,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ゆうじょう",
     "romaji": "ゆうじょう",
     "meaning": "우정",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この友情について考えます。",
@@ -10898,7 +10898,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんけい",
     "romaji": "かんけい",
     "meaning": "관계",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この関係について考えます。",
@@ -10940,7 +10940,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "りゆう",
     "romaji": "りゆう",
     "meaning": "이유",
-    "level": "N5",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この理由について考えます。",
@@ -10968,7 +10968,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "もくひょう",
     "romaji": "もくひょう",
     "meaning": "목표",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この目標について考えます。",
@@ -10982,7 +10982,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "いけん",
     "romaji": "いけん",
     "meaning": "의견",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この意見について考えます。",
@@ -11010,7 +11010,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんじょう",
     "romaji": "かんじょう",
     "meaning": "감정",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この感情について考えます。",
@@ -11024,7 +11024,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ひょうげん",
     "romaji": "ひょうげん",
     "meaning": "표현",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この表現について考えます。",
@@ -11038,7 +11038,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せつめい",
     "romaji": "せつめい",
     "meaning": "설명",
-    "level": "N3",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この説明について考えます。",
@@ -11066,7 +11066,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しょうかい",
     "romaji": "しょうかい",
     "meaning": "소개",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この紹介について考えます。",
@@ -11108,7 +11108,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ほうもん",
     "romaji": "ほうもん",
     "meaning": "방문",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この訪問について考えます。",
@@ -11122,7 +11122,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんがく",
     "romaji": "けんがく",
     "meaning": "견학",
-    "level": "N3",
+    "level": "N2",
     "category": "food",
     "example": {
       "japanese": "この見学について考えます。",
@@ -11192,7 +11192,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "とうちゃく",
     "romaji": "とうちゃく",
     "meaning": "도착",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この到着について考えます。",
@@ -11220,7 +11220,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "にゅうじょう",
     "romaji": "にゅうじょう",
     "meaning": "입장",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この入場について考えます。",
@@ -11262,7 +11262,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きょか",
     "romaji": "きょか",
     "meaning": "허가",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この許可について考えます。",
@@ -11276,7 +11276,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "じゆう",
     "romaji": "じゆう",
     "meaning": "자유",
-    "level": "N5",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この自由について考えます。",
@@ -11290,7 +11290,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "べんり",
     "romaji": "べんり",
     "meaning": "편리",
-    "level": "N3",
+    "level": "N5",
     "category": "food",
     "example": {
       "japanese": "この便利について考えます。",
@@ -11304,7 +11304,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かいてき",
     "romaji": "かいてき",
     "meaning": "쾌적",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この快適について考えます。",
@@ -11318,7 +11318,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しんせん",
     "romaji": "しんせん",
     "meaning": "신선",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この新鮮について考えます。",
@@ -11346,7 +11346,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きれい",
     "romaji": "きれい",
     "meaning": "예쁨, 깨끗함",
-    "level": "N4",
+    "level": "N5",
     "category": "food",
     "example": {
       "japanese": "この綺麗について考えます。",
@@ -11360,7 +11360,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ほうふ",
     "romaji": "ほうふ",
     "meaning": "풍부",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この豊富について考えます。",
@@ -11388,7 +11388,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "じゅうよう",
     "romaji": "じゅうよう",
     "meaning": "중요",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この重要について考えます。",
@@ -11402,7 +11402,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けいかく",
     "romaji": "けいかく",
     "meaning": "계획",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この計画について考えます。",
@@ -11416,7 +11416,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "りょこう",
     "romaji": "りょこう",
     "meaning": "여행",
-    "level": "N3",
+    "level": "N5",
     "category": "business",
     "example": {
       "japanese": "この旅行について考えます。",
@@ -11430,7 +11430,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きろく",
     "romaji": "きろく",
     "meaning": "기록",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この記録について考えます。",
@@ -11444,7 +11444,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "はっけん",
     "romaji": "はっけん",
     "meaning": "발견",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この発見について考えます。",
@@ -11458,7 +11458,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいかつ",
     "romaji": "せいかつ",
     "meaning": "생활",
-    "level": "N3",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この生活について考えます。",
@@ -11472,7 +11472,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かつどう",
     "romaji": "かつどう",
     "meaning": "활동",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この活動について考えます。",
@@ -11486,7 +11486,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "こうどう",
     "romaji": "こうどう",
     "meaning": "행동",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この行動について考えます。",
@@ -11514,7 +11514,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいこう",
     "romaji": "せいこう",
     "meaning": "성공",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この成功について考えます。",
@@ -11528,7 +11528,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しっぱい",
     "romaji": "しっぱい",
     "meaning": "실패",
-    "level": "N5",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この失敗について考えます。",
@@ -11556,7 +11556,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "そんけい",
     "romaji": "そんけい",
     "meaning": "존경",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この尊敬について考えます。",
@@ -11570,7 +11570,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あいじょう",
     "romaji": "あいじょう",
     "meaning": "애정",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この愛情について考えます。",
@@ -11612,7 +11612,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けっか",
     "romaji": "けっか",
     "meaning": "결과",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この結果について考えます。",
@@ -11626,7 +11626,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "げんいん",
     "romaji": "げんいん",
     "meaning": "원인",
-    "level": "N3",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この原因について考えます。",
@@ -11654,7 +11654,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "もくてき",
     "romaji": "もくてき",
     "meaning": "목적",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この目的について考えます。",
@@ -11696,7 +11696,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんがえ",
     "romaji": "かんがえ",
     "meaning": "생각",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この考えについて考えます。",
@@ -11724,7 +11724,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ひょうげん",
     "romaji": "ひょうげん",
     "meaning": "표현",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この表現について考えます。",
@@ -11738,7 +11738,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せつめい",
     "romaji": "せつめい",
     "meaning": "설명",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この説明について考えます。",
@@ -11752,7 +11752,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あんない",
     "romaji": "あんない",
     "meaning": "안내",
-    "level": "N3",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この案内について考えます。",
@@ -11780,7 +11780,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんげい",
     "romaji": "かんげい",
     "meaning": "환영",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この歓迎について考えます。",
@@ -11794,7 +11794,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しょうたい",
     "romaji": "しょうたい",
     "meaning": "초대",
-    "level": "N3",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この招待について考えます。",
@@ -11808,7 +11808,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ほうもん",
     "romaji": "ほうもん",
     "meaning": "방문",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この訪問について考えます。",
@@ -11822,7 +11822,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんがく",
     "romaji": "けんがく",
     "meaning": "견학",
-    "level": "N5",
+    "level": "N2",
     "category": "travel",
     "example": {
       "japanese": "この見学について考えます。",
@@ -11836,7 +11836,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんぶつ",
     "romaji": "けんぶつ",
     "meaning": "구경",
-    "level": "N3",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この見物について考えます。",
@@ -11864,7 +11864,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "いどう",
     "romaji": "いどう",
     "meaning": "이동",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この移動について考えます。",
@@ -11878,7 +11878,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しゅっぱつ",
     "romaji": "しゅっぱつ",
     "meaning": "출발",
-    "level": "N3",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この出発について考えます。",
@@ -11892,7 +11892,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "とうちゃく",
     "romaji": "とうちゃく",
     "meaning": "도착",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この到着について考えます。",
@@ -11906,7 +11906,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "つうか",
     "romaji": "つうか",
     "meaning": "통과",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この通過について考えます。",
@@ -11948,7 +11948,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きんし",
     "romaji": "きんし",
     "meaning": "금지",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この禁止について考えます。",
@@ -12018,7 +12018,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しんせん",
     "romaji": "しんせん",
     "meaning": "신선",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この新鮮について考えます。",
@@ -12032,7 +12032,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいけつ",
     "romaji": "せいけつ",
     "meaning": "청결",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この清潔について考えます。",
@@ -12046,7 +12046,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きれい",
     "romaji": "きれい",
     "meaning": "예쁨, 깨끗함",
-    "level": "N3",
+    "level": "N5",
     "category": "travel",
     "example": {
       "japanese": "この綺麗について考えます。",
@@ -12060,7 +12060,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ほうふ",
     "romaji": "ほうふ",
     "meaning": "풍부",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この豊富について考えます。",
@@ -12074,7 +12074,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きちょう",
     "romaji": "きちょう",
     "meaning": "귀중",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この貴重について考えます。",
@@ -12144,7 +12144,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "はっけん",
     "romaji": "はっけん",
     "meaning": "발견",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この発見について考えます。",
@@ -12158,7 +12158,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいかつ",
     "romaji": "せいかつ",
     "meaning": "생활",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この生活について考えます。",
@@ -12186,7 +12186,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "こうどう",
     "romaji": "こうどう",
     "meaning": "행동",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この行動について考えます。",
@@ -12200,7 +12200,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きぼう",
     "romaji": "きぼう",
     "meaning": "희망",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この希望について考えます。",
@@ -12242,7 +12242,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんしゃ",
     "romaji": "かんしゃ",
     "meaning": "감사",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この感謝について考えます。",
@@ -12270,7 +12270,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あいじょう",
     "romaji": "あいじょう",
     "meaning": "애정",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この愛情について考えます。",
@@ -12284,7 +12284,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ゆうじょう",
     "romaji": "ゆうじょう",
     "meaning": "우정",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この友情について考えます。",
@@ -12298,7 +12298,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんけい",
     "romaji": "かんけい",
     "meaning": "관계",
-    "level": "N3",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この関係について考えます。",
@@ -12312,7 +12312,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けっか",
     "romaji": "けっか",
     "meaning": "결과",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この結果について考えます。",
@@ -12326,7 +12326,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "げんいん",
     "romaji": "げんいん",
     "meaning": "원인",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この原因について考えます。",
@@ -12340,7 +12340,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "りゆう",
     "romaji": "りゆう",
     "meaning": "이유",
-    "level": "N3",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この理由について考えます。",
@@ -12354,7 +12354,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "もくてき",
     "romaji": "もくてき",
     "meaning": "목적",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この目的について考えます。",
@@ -12368,7 +12368,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "もくひょう",
     "romaji": "もくひょう",
     "meaning": "목표",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この目標について考えます。",
@@ -12382,7 +12382,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "いけん",
     "romaji": "いけん",
     "meaning": "의견",
-    "level": "N3",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この意見について考えます。",
@@ -12396,7 +12396,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんがえ",
     "romaji": "かんがえ",
     "meaning": "생각",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この考えについて考えます。",
@@ -12410,7 +12410,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんじょう",
     "romaji": "かんじょう",
     "meaning": "감정",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この感情について考えます。",
@@ -12452,7 +12452,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あんない",
     "romaji": "あんない",
     "meaning": "안내",
-    "level": "N5",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この案内について考えます。",
@@ -12466,7 +12466,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しょうかい",
     "romaji": "しょうかい",
     "meaning": "소개",
-    "level": "N3",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この紹介について考えます。",
@@ -12480,7 +12480,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんげい",
     "romaji": "かんげい",
     "meaning": "환영",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この歓迎について考えます。",
@@ -12494,7 +12494,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しょうたい",
     "romaji": "しょうたい",
     "meaning": "초대",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この招待について考えます。",
@@ -12522,7 +12522,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんがく",
     "romaji": "けんがく",
     "meaning": "견학",
-    "level": "N4",
+    "level": "N2",
     "category": "food",
     "example": {
       "japanese": "この見学について考えます。",
@@ -12536,7 +12536,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんぶつ",
     "romaji": "けんぶつ",
     "meaning": "구경",
-    "level": "N5",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この見物について考えます。",
@@ -12564,7 +12564,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "いどう",
     "romaji": "いどう",
     "meaning": "이동",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この移動について考えます。",
@@ -12578,7 +12578,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しゅっぱつ",
     "romaji": "しゅっぱつ",
     "meaning": "출발",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この出発について考えます。",
@@ -12606,7 +12606,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "つうか",
     "romaji": "つうか",
     "meaning": "통과",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この通過について考えます。",
@@ -12620,7 +12620,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "にゅうじょう",
     "romaji": "にゅうじょう",
     "meaning": "입장",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この入場について考えます。",
@@ -12648,7 +12648,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きんし",
     "romaji": "きんし",
     "meaning": "금지",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この禁止について考えます。",
@@ -12662,7 +12662,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きょか",
     "romaji": "きょか",
     "meaning": "허가",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この許可について考えます。",
@@ -12676,7 +12676,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "じゆう",
     "romaji": "じゆう",
     "meaning": "자유",
-    "level": "N3",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この自由について考えます。",
@@ -12690,7 +12690,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "べんり",
     "romaji": "べんり",
     "meaning": "편리",
-    "level": "N4",
+    "level": "N5",
     "category": "food",
     "example": {
       "japanese": "この便利について考えます。",
@@ -12704,7 +12704,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かいてき",
     "romaji": "かいてき",
     "meaning": "쾌적",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この快適について考えます。",
@@ -12732,7 +12732,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいけつ",
     "romaji": "せいけつ",
     "meaning": "청결",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この清潔について考えます。",
@@ -12774,7 +12774,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きちょう",
     "romaji": "きちょう",
     "meaning": "귀중",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この貴重について考えます。",
@@ -12788,7 +12788,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "じゅうよう",
     "romaji": "じゅうよう",
     "meaning": "중요",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この重要について考えます。",
@@ -12802,7 +12802,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けいかく",
     "romaji": "けいかく",
     "meaning": "계획",
-    "level": "N3",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この計画について考えます。",
@@ -12816,7 +12816,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "りょこう",
     "romaji": "りょこう",
     "meaning": "여행",
-    "level": "N4",
+    "level": "N5",
     "category": "business",
     "example": {
       "japanese": "この旅行について考えます。",
@@ -12830,7 +12830,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きろく",
     "romaji": "きろく",
     "meaning": "기록",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この記録について考えます。",
@@ -12872,7 +12872,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かつどう",
     "romaji": "かつどう",
     "meaning": "활동",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この活動について考えます。",
@@ -12900,7 +12900,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きぼう",
     "romaji": "きぼう",
     "meaning": "희망",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この希望について考えます。",
@@ -12914,7 +12914,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいこう",
     "romaji": "せいこう",
     "meaning": "성공",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この成功について考えます。",
@@ -12928,7 +12928,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しっぱい",
     "romaji": "しっぱい",
     "meaning": "실패",
-    "level": "N3",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この失敗について考えます。",
@@ -12942,7 +12942,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんしゃ",
     "romaji": "かんしゃ",
     "meaning": "감사",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この感謝について考えます。",
@@ -12956,7 +12956,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "そんけい",
     "romaji": "そんけい",
     "meaning": "존경",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この尊敬について考えます。",
@@ -12984,7 +12984,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ゆうじょう",
     "romaji": "ゆうじょう",
     "meaning": "우정",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この友情について考えます。",
@@ -12998,7 +12998,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんけい",
     "romaji": "かんけい",
     "meaning": "관계",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この関係について考えます。",
@@ -13040,7 +13040,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "りゆう",
     "romaji": "りゆう",
     "meaning": "이유",
-    "level": "N5",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この理由について考えます。",
@@ -13068,7 +13068,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "もくひょう",
     "romaji": "もくひょう",
     "meaning": "목표",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この目標について考えます。",
@@ -13082,7 +13082,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "いけん",
     "romaji": "いけん",
     "meaning": "의견",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この意見について考えます。",
@@ -13110,7 +13110,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんじょう",
     "romaji": "かんじょう",
     "meaning": "감정",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この感情について考えます。",
@@ -13124,7 +13124,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ひょうげん",
     "romaji": "ひょうげん",
     "meaning": "표현",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この表現について考えます。",
@@ -13138,7 +13138,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せつめい",
     "romaji": "せつめい",
     "meaning": "설명",
-    "level": "N3",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この説明について考えます。",
@@ -13166,7 +13166,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しょうかい",
     "romaji": "しょうかい",
     "meaning": "소개",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この紹介について考えます。",
@@ -13208,7 +13208,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ほうもん",
     "romaji": "ほうもん",
     "meaning": "방문",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この訪問について考えます。",
@@ -13222,7 +13222,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんがく",
     "romaji": "けんがく",
     "meaning": "견학",
-    "level": "N3",
+    "level": "N2",
     "category": "travel",
     "example": {
       "japanese": "この見学について考えます。",
@@ -13292,7 +13292,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "とうちゃく",
     "romaji": "とうちゃく",
     "meaning": "도착",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この到着について考えます。",
@@ -13320,7 +13320,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "にゅうじょう",
     "romaji": "にゅうじょう",
     "meaning": "입장",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この入場について考えます。",
@@ -13362,7 +13362,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きょか",
     "romaji": "きょか",
     "meaning": "허가",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この許可について考えます。",
@@ -13376,7 +13376,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "じゆう",
     "romaji": "じゆう",
     "meaning": "자유",
-    "level": "N5",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この自由について考えます。",
@@ -13390,7 +13390,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "べんり",
     "romaji": "べんり",
     "meaning": "편리",
-    "level": "N3",
+    "level": "N5",
     "category": "travel",
     "example": {
       "japanese": "この便利について考えます。",
@@ -13404,7 +13404,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かいてき",
     "romaji": "かいてき",
     "meaning": "쾌적",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この快適について考えます。",
@@ -13418,7 +13418,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しんせん",
     "romaji": "しんせん",
     "meaning": "신선",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この新鮮について考えます。",
@@ -13446,7 +13446,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きれい",
     "romaji": "きれい",
     "meaning": "예쁨, 깨끗함",
-    "level": "N4",
+    "level": "N5",
     "category": "travel",
     "example": {
       "japanese": "この綺麗について考えます。",
@@ -13460,7 +13460,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ほうふ",
     "romaji": "ほうふ",
     "meaning": "풍부",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この豊富について考えます。",
@@ -13488,7 +13488,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "じゅうよう",
     "romaji": "じゅうよう",
     "meaning": "중요",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この重要について考えます。",
@@ -13502,7 +13502,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けいかく",
     "romaji": "けいかく",
     "meaning": "계획",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この計画について考えます。",
@@ -13516,7 +13516,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "りょこう",
     "romaji": "りょこう",
     "meaning": "여행",
-    "level": "N3",
+    "level": "N5",
     "category": "daily",
     "example": {
       "japanese": "この旅行について考えます。",
@@ -13530,7 +13530,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きろく",
     "romaji": "きろく",
     "meaning": "기록",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この記録について考えます。",
@@ -13544,7 +13544,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "はっけん",
     "romaji": "はっけん",
     "meaning": "발견",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この発見について考えます。",
@@ -13558,7 +13558,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいかつ",
     "romaji": "せいかつ",
     "meaning": "생활",
-    "level": "N3",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この生活について考えます。",
@@ -13572,7 +13572,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かつどう",
     "romaji": "かつどう",
     "meaning": "활동",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この活動について考えます。",
@@ -13586,7 +13586,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "こうどう",
     "romaji": "こうどう",
     "meaning": "행동",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この行動について考えます。",
@@ -13614,7 +13614,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいこう",
     "romaji": "せいこう",
     "meaning": "성공",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この成功について考えます。",
@@ -13628,7 +13628,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しっぱい",
     "romaji": "しっぱい",
     "meaning": "실패",
-    "level": "N5",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この失敗について考えます。",
@@ -13656,7 +13656,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "そんけい",
     "romaji": "そんけい",
     "meaning": "존경",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この尊敬について考えます。",
@@ -13670,7 +13670,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あいじょう",
     "romaji": "あいじょう",
     "meaning": "애정",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この愛情について考えます。",
@@ -13712,7 +13712,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けっか",
     "romaji": "けっか",
     "meaning": "결과",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この結果について考えます。",
@@ -13726,7 +13726,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "げんいん",
     "romaji": "げんいん",
     "meaning": "원인",
-    "level": "N3",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この原因について考えます。",
@@ -13754,7 +13754,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "もくてき",
     "romaji": "もくてき",
     "meaning": "목적",
-    "level": "N5",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この目的について考えます。",
@@ -13796,7 +13796,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんがえ",
     "romaji": "かんがえ",
     "meaning": "생각",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この考えについて考えます。",
@@ -13824,7 +13824,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ひょうげん",
     "romaji": "ひょうげん",
     "meaning": "표현",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この表現について考えます。",
@@ -13838,7 +13838,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せつめい",
     "romaji": "せつめい",
     "meaning": "설명",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この説明について考えます。",
@@ -13852,7 +13852,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あんない",
     "romaji": "あんない",
     "meaning": "안내",
-    "level": "N3",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この案内について考えます。",
@@ -13880,7 +13880,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんげい",
     "romaji": "かんげい",
     "meaning": "환영",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この歓迎について考えます。",
@@ -13894,7 +13894,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しょうたい",
     "romaji": "しょうたい",
     "meaning": "초대",
-    "level": "N3",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この招待について考えます。",
@@ -13908,7 +13908,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ほうもん",
     "romaji": "ほうもん",
     "meaning": "방문",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この訪問について考えます。",
@@ -13922,7 +13922,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんがく",
     "romaji": "けんがく",
     "meaning": "견학",
-    "level": "N5",
+    "level": "N2",
     "category": "food",
     "example": {
       "japanese": "この見学について考えます。",
@@ -13936,7 +13936,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんぶつ",
     "romaji": "けんぶつ",
     "meaning": "구경",
-    "level": "N3",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この見物について考えます。",
@@ -13964,7 +13964,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "いどう",
     "romaji": "いどう",
     "meaning": "이동",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この移動について考えます。",
@@ -13978,7 +13978,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しゅっぱつ",
     "romaji": "しゅっぱつ",
     "meaning": "출발",
-    "level": "N3",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この出発について考えます。",
@@ -13992,7 +13992,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "とうちゃく",
     "romaji": "とうちゃく",
     "meaning": "도착",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この到着について考えます。",
@@ -14006,7 +14006,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "つうか",
     "romaji": "つうか",
     "meaning": "통과",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この通過について考えます。",
@@ -14048,7 +14048,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きんし",
     "romaji": "きんし",
     "meaning": "금지",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この禁止について考えます。",
@@ -14118,7 +14118,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しんせん",
     "romaji": "しんせん",
     "meaning": "신선",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この新鮮について考えます。",
@@ -14132,7 +14132,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいけつ",
     "romaji": "せいけつ",
     "meaning": "청결",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この清潔について考えます。",
@@ -14146,7 +14146,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きれい",
     "romaji": "きれい",
     "meaning": "예쁨, 깨끗함",
-    "level": "N3",
+    "level": "N5",
     "category": "food",
     "example": {
       "japanese": "この綺麗について考えます。",
@@ -14160,7 +14160,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ほうふ",
     "romaji": "ほうふ",
     "meaning": "풍부",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この豊富について考えます。",
@@ -14174,7 +14174,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きちょう",
     "romaji": "きちょう",
     "meaning": "귀중",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この貴重について考えます。",
@@ -14244,7 +14244,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "はっけん",
     "romaji": "はっけん",
     "meaning": "발견",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この発見について考えます。",
@@ -14258,7 +14258,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "せいかつ",
     "romaji": "せいかつ",
     "meaning": "생활",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この生活について考えます。",
@@ -14286,7 +14286,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "こうどう",
     "romaji": "こうどう",
     "meaning": "행동",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この行動について考えます。",
@@ -14300,7 +14300,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "きぼう",
     "romaji": "きぼう",
     "meaning": "희망",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この希望について考えます。",
@@ -14342,7 +14342,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんしゃ",
     "romaji": "かんしゃ",
     "meaning": "감사",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この感謝について考えます。",
@@ -14370,7 +14370,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あいじょう",
     "romaji": "あいじょう",
     "meaning": "애정",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この愛情について考えます。",
@@ -14384,7 +14384,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "ゆうじょう",
     "romaji": "ゆうじょう",
     "meaning": "우정",
-    "level": "N5",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この友情について考えます。",
@@ -14398,7 +14398,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんけい",
     "romaji": "かんけい",
     "meaning": "관계",
-    "level": "N3",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この関係について考えます。",
@@ -14412,7 +14412,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けっか",
     "romaji": "けっか",
     "meaning": "결과",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この結果について考えます。",
@@ -14426,7 +14426,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "げんいん",
     "romaji": "げんいん",
     "meaning": "원인",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この原因について考えます。",
@@ -14440,7 +14440,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "りゆう",
     "romaji": "りゆう",
     "meaning": "이유",
-    "level": "N3",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この理由について考えます。",
@@ -14454,7 +14454,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "もくてき",
     "romaji": "もくてき",
     "meaning": "목적",
-    "level": "N4",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この目的について考えます。",
@@ -14468,7 +14468,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "もくひょう",
     "romaji": "もくひょう",
     "meaning": "목표",
-    "level": "N5",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この目標について考えます。",
@@ -14482,7 +14482,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "いけん",
     "romaji": "いけん",
     "meaning": "의견",
-    "level": "N3",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この意見について考えます。",
@@ -14496,7 +14496,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんがえ",
     "romaji": "かんがえ",
     "meaning": "생각",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この考えについて考えます。",
@@ -14510,7 +14510,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんじょう",
     "romaji": "かんじょう",
     "meaning": "감정",
-    "level": "N5",
+    "level": "N3",
     "category": "travel",
     "example": {
       "japanese": "この感情について考えます。",
@@ -14552,7 +14552,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "あんない",
     "romaji": "あんない",
     "meaning": "안내",
-    "level": "N5",
+    "level": "N4",
     "category": "business",
     "example": {
       "japanese": "この案内について考えます。",
@@ -14566,7 +14566,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しょうかい",
     "romaji": "しょうかい",
     "meaning": "소개",
-    "level": "N3",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この紹介について考えます。",
@@ -14580,7 +14580,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "かんげい",
     "romaji": "かんげい",
     "meaning": "환영",
-    "level": "N4",
+    "level": "N3",
     "category": "daily",
     "example": {
       "japanese": "この歓迎について考えます。",
@@ -14594,7 +14594,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しょうたい",
     "romaji": "しょうたい",
     "meaning": "초대",
-    "level": "N5",
+    "level": "N4",
     "category": "food",
     "example": {
       "japanese": "この招待について考えます。",
@@ -14622,7 +14622,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんがく",
     "romaji": "けんがく",
     "meaning": "견학",
-    "level": "N4",
+    "level": "N2",
     "category": "travel",
     "example": {
       "japanese": "この見学について考えます。",
@@ -14636,7 +14636,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "けんぶつ",
     "romaji": "けんぶつ",
     "meaning": "구경",
-    "level": "N5",
+    "level": "N4",
     "category": "daily",
     "example": {
       "japanese": "この見物について考えます。",
@@ -14664,7 +14664,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "いどう",
     "romaji": "いどう",
     "meaning": "이동",
-    "level": "N4",
+    "level": "N3",
     "category": "business",
     "example": {
       "japanese": "この移動について考えます。",
@@ -14678,7 +14678,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "しゅっぱつ",
     "romaji": "しゅっぱつ",
     "meaning": "출발",
-    "level": "N5",
+    "level": "N4",
     "category": "travel",
     "example": {
       "japanese": "この出発について考えます。",
@@ -14706,7 +14706,7 @@ export const VOCAB_DATA: WordItem[] = [
     "kana": "つうか",
     "romaji": "つうか",
     "meaning": "통과",
-    "level": "N4",
+    "level": "N3",
     "category": "food",
     "example": {
       "japanese": "この通過について考えます。",
@@ -14714,4 +14714,41 @@ export const VOCAB_DATA: WordItem[] = [
       "korean": "이 통과에 대해 생각합니다."
     }
   }
+];
+
+import { VOCAB_EXTRA_1 } from './vocabExtra1';
+import { VOCAB_EXTRA_2 } from './vocabExtra2';
+import { VOCAB_EXTRA_3 } from './vocabExtra3';
+import { VOCAB_N5_FILL } from './vocabN5Fill';
+import { VOCAB_N4_FILL } from './vocabN4Fill';
+import { VOCAB_N3_FILL_1 } from './vocabN3Fill_1';
+import { VOCAB_N3_FILL_2 } from './vocabN3Fill_2';
+import { VOCAB_N3_FILL_3 } from './vocabN3Fill_3';
+import { VOCAB_N2_FILL_1 } from './vocabN2Fill_1';
+import { VOCAB_N2_FILL_2 } from './vocabN2Fill_2';
+import { VOCAB_N2_FILL_3 } from './vocabN2Fill_3';
+import { VOCAB_N1_FILL_1 } from './vocabN1Fill_1';
+import { VOCAB_N1_FILL_2 } from './vocabN1Fill_2';
+import { VOCAB_N1_FILL_3 } from './vocabN1Fill_3';
+import { VOCAB_N1_FILL_4 } from './vocabN1Fill_4';
+import { VOCAB_N1_FILL_5 } from './vocabN1Fill_5';
+
+export const ALL_VOCAB: WordItem[] = [
+  ...VOCAB_DATA,
+  ...VOCAB_EXTRA_1,
+  ...VOCAB_EXTRA_2,
+  ...VOCAB_EXTRA_3,
+  ...VOCAB_N5_FILL,
+  ...VOCAB_N4_FILL,
+  ...VOCAB_N3_FILL_1,
+  ...VOCAB_N3_FILL_2,
+  ...VOCAB_N3_FILL_3,
+  ...VOCAB_N2_FILL_1,
+  ...VOCAB_N2_FILL_2,
+  ...VOCAB_N2_FILL_3,
+  ...VOCAB_N1_FILL_1,
+  ...VOCAB_N1_FILL_2,
+  ...VOCAB_N1_FILL_3,
+  ...VOCAB_N1_FILL_4,
+  ...VOCAB_N1_FILL_5,
 ];

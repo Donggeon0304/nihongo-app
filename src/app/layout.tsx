@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next';
+import Script from 'next/script';
 import './globals.css';
 import Header from '@/components/Header';
+import { AuthProvider } from '@/components/AuthProvider';
 
 export const metadata: Metadata = {
   title: 'NihonGo! - 나만의 맞춤 일본어 학습 앱',
@@ -37,9 +39,10 @@ export default function RootLayout({
     <html lang="ko" data-theme="light" suppressHydrationWarning>
       <head>
         <meta name="color-scheme" content="light dark" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function() {
+      </head>
+      <body className="min-h-screen antialiased selection:bg-rose-500 selection:text-white">
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`(function() {
   try {
     var theme = localStorage.getItem('nihongo_theme') || 'light';
     var root = document.documentElement;
@@ -54,13 +57,12 @@ export default function RootLayout({
       root.style.colorScheme = 'light';
     }
   } catch(e) {}
-})();`,
-          }}
-        />
-      </head>
-      <body className="min-h-screen antialiased selection:bg-rose-500 selection:text-white">
-        <Header />
-        <main className="max-w-6xl mx-auto px-4 py-6 md:py-8">{children}</main>
+})();`}
+        </Script>
+        <AuthProvider>
+          <Header />
+          <main className="max-w-6xl mx-auto px-4 py-6 md:py-8">{children}</main>
+        </AuthProvider>
       </body>
     </html>
   );

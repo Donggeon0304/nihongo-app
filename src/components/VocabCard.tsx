@@ -4,13 +4,16 @@ import React from 'react';
 import { WordItem } from '@/data/vocabData';
 import { playJapaneseSpeech } from '@/lib/speech';
 import { kanaToHangul } from '@/lib/kanaToHangul';
-import { Bookmark, Volume2 } from 'lucide-react';
+import { Bookmark, Flag, Volume2 } from 'lucide-react';
 
 interface VocabCardProps {
   word: WordItem;
   isBookmarked: boolean;
   onToggleBookmark: (id: string) => void;
   showHangul?: boolean;
+  wordNumber?: number;
+  isLastStudied?: boolean;       // 이 단어가 "여기까지!" 마커인지
+  onMarkLastStudied?: (id: string, number: number) => void;
 }
 
 const LEVEL_COLORS: Record<string, string> = {
@@ -29,6 +32,9 @@ const CATEGORY_NAMES: Record<string, string> = {
   shopping: '쇼핑',
   business: '비즈니스',
   emotion: '감정/상태',
+  entertainment: '엔터',
+  conversation: '회화',
+  restaurant: '식당/주문',
 };
 
 export default function VocabCard({
@@ -36,6 +42,9 @@ export default function VocabCard({
   isBookmarked,
   onToggleBookmark,
   showHangul = true,
+  wordNumber,
+  isLastStudied = false,
+  onMarkLastStudied,
 }: VocabCardProps) {
   const handlePlayWord = () => {
     playJapaneseSpeech(word.kanji || word.kana);
@@ -52,11 +61,22 @@ export default function VocabCard({
   };
 
   return (
-    <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-5 hover:border-zinc-300 dark:hover:border-zinc-700 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+    <div
+      id={`word-${word.id}`}
+      className={`bg-white dark:bg-zinc-900 border-2 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group ${
+      isLastStudied
+        ? 'border-rose-400 dark:border-rose-500 ring-2 ring-rose-200 dark:ring-rose-900/40'
+        : 'border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700'
+    }`}>
       <div>
         {/* 상단 뱃지 & 북마크 */}
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-1.5">
+            {wordNumber !== undefined && (
+              <span className="px-1.5 py-0.5 rounded-md text-[11px] font-black tabular-nums text-zinc-400 dark:text-zinc-500 bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/60">
+                #{String(wordNumber).padStart(4, '0')}
+              </span>
+            )}
             <span
               className={`px-2 py-0.5 rounded-md text-[11px] font-bold border ${
                 LEVEL_COLORS[word.level] || 'bg-zinc-100 text-zinc-600'
@@ -138,7 +158,7 @@ export default function VocabCard({
         )}
       </div>
 
-      {/* 발음 듣기 버튼 */}
+      {/* 발음 듣기 & 여기까지 버튼 */}
       <div className="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between">
         <button
           onClick={handlePlayWord}
@@ -147,6 +167,20 @@ export default function VocabCard({
           <Volume2 className="w-4 h-4" />
           원어민 발음 듣기
         </button>
+        {onMarkLastStudied && wordNumber !== undefined && (
+          <button
+            onClick={() => onMarkLastStudied(word.id, wordNumber)}
+            className={`flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-bold transition-all active:scale-95 ${
+              isLastStudied
+                ? 'bg-rose-500 text-white shadow-sm'
+                : 'text-zinc-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30'
+            }`}
+            title={isLastStudied ? '학습 마커 해제' : '여기까지 학습했어요!'}
+          >
+            <Flag className={`w-3.5 h-3.5 ${isLastStudied ? 'fill-current' : ''}`} />
+            {isLastStudied ? '여기까지!' : '🚩'}
+          </button>
+        )}
       </div>
     </div>
   );

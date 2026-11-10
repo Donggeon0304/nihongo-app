@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { loadUserStats, UserStats } from '@/lib/storage';
-import { VOCAB_DATA } from '@/data/vocabData';
+import { ALL_VOCAB } from '@/data/vocabData';
 import { playJapaneseSpeech } from '@/lib/speech';
 import { kanaToHangul } from '@/lib/kanaToHangul';
 import {
@@ -18,19 +18,20 @@ import {
 
 export default function HomePage() {
   const [stats, setStats] = useState<UserStats | null>(null);
-  const [todayWords, setTodayWords] = useState(VOCAB_DATA.slice(0, 3));
+  const [todayWords, setTodayWords] = useState(ALL_VOCAB.slice(0, 6));
   const [isTodayAttended, setIsTodayAttended] = useState<boolean>(false);
 
   useEffect(() => {
+    // 출석은 퀴즈 완료 시에만 체크됨 (자동 아님)
     const loadedStats = loadUserStats();
     setStats(loadedStats);
 
     const todayStr = new Date().toISOString().split('T')[0];
     setIsTodayAttended(loadedStats.attendanceDates.includes(todayStr));
 
-    // 오늘의 단어 3개 랜덤 추출
-    const shuffled = [...VOCAB_DATA].sort(() => 0.5 - Math.random());
-    setTodayWords(shuffled.slice(0, 3));
+    // 오늘의 단어 6개 랜덤 추출
+    const shuffled = [...ALL_VOCAB].sort(() => 0.5 - Math.random());
+    setTodayWords(shuffled.slice(0, 6));
   }, []);
 
   return (
@@ -87,7 +88,48 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* 2. 오늘 추천 단어 3개 바로 표시 */}
+      {/* 출석 체크 배너 (모바일에서도 표시) */}
+      {isTodayAttended ? (
+        <div className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800">
+          <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+          <div className="flex-1">
+            <div className="text-sm font-bold text-emerald-800 dark:text-emerald-200">
+              ✅ 오늘 출석 완료!
+            </div>
+            <div className="text-xs text-emerald-600 dark:text-emerald-400">
+              {stats?.streak ?? 0}일 연속 학습 중 · 총 {stats?.attendanceDates.length ?? 0}일 출석
+            </div>
+          </div>
+          <Link
+            href="/calendar"
+            className="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1"
+          >
+            기록 보기
+            <ArrowRight className="w-3 h-3" />
+          </Link>
+        </div>
+      ) : (
+        <div className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800">
+          <Play className="w-5 h-5 text-amber-500 flex-shrink-0" />
+          <div className="flex-1">
+            <div className="text-sm font-bold text-amber-800 dark:text-amber-200">
+              📝 쪽지시험을 완료하면 출석 체크!
+            </div>
+            <div className="text-xs text-amber-600 dark:text-amber-400">
+              오늘의 쪽지시험을 풀면 자동으로 출석이 기록됩니다
+            </div>
+          </div>
+          <Link
+            href="/quiz"
+            className="text-xs font-bold text-amber-600 dark:text-amber-400 hover:underline flex items-center gap-1"
+          >
+            시험 시작
+            <ArrowRight className="w-3 h-3" />
+          </Link>
+        </div>
+      )}
+
+      {/* 2. 오늘 추천 단어 6개 바로 표시 */}
       <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 shadow-sm">
         <div className="flex items-center justify-between pb-4 border-b border-zinc-100 dark:border-zinc-800 mb-4">
           <h2 className="text-base font-bold flex items-center gap-2 text-zinc-900 dark:text-zinc-100">

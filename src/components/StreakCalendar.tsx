@@ -54,6 +54,10 @@ export default function StreakCalendar({ stats }: StreakCalendarProps) {
 
   const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
 
+  // 오늘 날짜 문자열
+  const now = new Date();
+  const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+
   return (
     <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 shadow-sm">
       {/* 캘린더 헤더 */}
@@ -95,14 +99,17 @@ export default function StreakCalendar({ stats }: StreakCalendarProps) {
           }
 
           const isAttended = stats.attendanceDates.includes(item.dateStr);
+          const isToday = item.dateStr === todayStr;
           const quizzes = getQuizForDate(item.dateStr);
           const highestScore = quizzes.length > 0 ? Math.max(...quizzes.map((q) => q.score)) : null;
 
           return (
             <div
               key={item.dateStr}
-              className={`h-16 md:h-20 p-1.5 rounded-xl border flex flex-col justify-between transition-all ${
-                isAttended
+              className={`h-16 md:h-20 p-1.5 rounded-xl border-2 flex flex-col justify-between transition-all ${
+                isToday
+                  ? 'border-rose-500 dark:border-rose-400 ring-2 ring-rose-200 dark:ring-rose-900/40 bg-rose-50 dark:bg-rose-950/30'
+                  : isAttended
                   ? 'border-rose-200 dark:border-rose-900 bg-rose-50/50 dark:bg-rose-950/20'
                   : 'border-zinc-100 dark:border-zinc-800 bg-zinc-50/40 dark:bg-zinc-900/40'
               }`}
@@ -110,10 +117,12 @@ export default function StreakCalendar({ stats }: StreakCalendarProps) {
               <div className="flex items-center justify-between">
                 <span
                   className={`text-xs font-bold ${
-                    isAttended ? 'text-rose-600 dark:text-rose-400' : 'text-zinc-600 dark:text-zinc-400'
+                    isToday
+                      ? 'text-rose-600 dark:text-rose-300 bg-rose-500/10 dark:bg-rose-500/20 px-1.5 py-0.5 rounded-full'
+                      : isAttended ? 'text-rose-600 dark:text-rose-400' : 'text-zinc-600 dark:text-zinc-400'
                   }`}
                 >
-                  {item.dayNum}
+                  {isToday ? '오늘' : item.dayNum}
                 </span>
                 {isAttended && (
                   <span className="text-[10px] text-rose-500 font-black">🌸</span>

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import StreakCalendar from '@/components/StreakCalendar';
 import { loadUserStats, removeFromWrongWords, UserStats } from '@/lib/storage';
-import { VOCAB_DATA } from '@/data/vocabData';
+import { ALL_VOCAB } from '@/data/vocabData';
 import { playJapaneseSpeech } from '@/lib/speech';
 import Link from 'next/link';
 import {
@@ -33,7 +33,7 @@ export default function CalendarPage() {
   if (!stats) return null;
 
   // 오답노트에 담긴 단어 객체 매핑
-  const wrongWordObjects = VOCAB_DATA.filter((w) => stats.wrongWordIds.includes(w.id));
+  const wrongWordObjects = ALL_VOCAB.filter((w) => stats.wrongWordIds.includes(w.id));
 
   return (
     <div className="space-y-6">

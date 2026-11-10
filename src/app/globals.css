@@ -3,7 +3,7 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, .dark, .dark *));
 
 /* ==========================================================================
-   [모바일 크롬 / 삼성인터넷 강제 다크모드(Auto Dark Mode) 완벽 차단 - 3단 방어]
+   [모바일 크롬 / 삼성인터넷 강제 다크모드(Auto Dark Mode) 차단 - 3단 방어]
    ========================================================================== */
 
 /* ① 1단계 선언: 브라우저에 "라이트/다크 둘 다 지원" 알림 */
@@ -11,8 +11,8 @@
   color-scheme: light dark;
 }
 
-/* ② 2단계 증거: @media 블록에 실제 다크 스타일을 제공하여
-   삼성인터넷/크롬이 "자체 다크모드 있구나" → 강제 반전 안 함 */
+/* ② 2단계 증거: @media 블록에 실제 다크 스타일을 제공
+   (body까지만! div 등 전체 요소에 넣으면 data-theme 오버라이드가 못 따라감) */
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: light dark;
@@ -20,20 +20,14 @@
     --foreground: #f4f4f5;
   }
   body {
-    background-color: #09090b !important;
-    color: #f4f4f5 !important;
-  }
-  /* 삼성인터넷은 body만으로 부족 — 실제 UI 컴포넌트에도 증거 필요 */
-  header, nav, main, section, footer, aside, article,
-  div, form, dialog {
     background-color: #09090b;
     color: #f4f4f5;
   }
 }
 
-/* ③ 3단계 덮어쓰기: data-theme 속성으로 실제 라이트/다크를 !important 강제 */
+/* ③ 3단계 덮어쓰기: data-theme으로 실제 모드를 !important 강제 */
 
-/* --- 라이트 모드 하드 가드 --- */
+/* --- 라이트 모드 --- */
 html[data-theme="light"] {
   color-scheme: light !important;
   --background: #ffffff !important;
@@ -45,62 +39,7 @@ html[data-theme="light"] body {
   color: #18181b !important;
 }
 
-/* 모든 하위 컴포넌트에 !important 배경/텍스트 보강
-   (Tailwind dark: 클래스는 일반 우선순위라 크롬 필터에 뚫림 → 여기서 방어) */
-html[data-theme="light"] header,
-html[data-theme="light"] nav,
-html[data-theme="light"] main,
-html[data-theme="light"] section,
-html[data-theme="light"] footer,
-html[data-theme="light"] aside {
-  background-color: transparent !important;
-}
-
-/* Tailwind bg-white 계열 — 카드, 모달, 패널, 입력창 등 */
-html[data-theme="light"] .bg-white {
-  background-color: #ffffff !important;
-}
-html[data-theme="light"] .bg-zinc-50 {
-  background-color: #fafafa !important;
-}
-html[data-theme="light"] .bg-zinc-100 {
-  background-color: #f4f4f5 !important;
-}
-
-/* 텍스트 컬러 보호 */
-html[data-theme="light"] .text-zinc-900 {
-  color: #18181b !important;
-}
-html[data-theme="light"] .text-zinc-800 {
-  color: #27272a !important;
-}
-html[data-theme="light"] .text-zinc-700 {
-  color: #3f3f46 !important;
-}
-html[data-theme="light"] .text-zinc-600 {
-  color: #52525c !important;
-}
-html[data-theme="light"] .text-zinc-500 {
-  color: #71717b !important;
-}
-html[data-theme="light"] .text-zinc-400 {
-  color: #9f9fa9 !important;
-}
-
-/* 보더 보호 */
-html[data-theme="light"] .border-zinc-200 {
-  border-color: #e4e4e7 !important;
-}
-html[data-theme="light"] .border-zinc-100 {
-  border-color: #f4f4f5 !important;
-}
-
-/* 반투명 배경 보호 (헤더 등) */
-html[data-theme="light"] .bg-white\/90 {
-  background-color: rgba(255, 255, 255, 0.9) !important;
-}
-
-/* --- 다크 모드 하드 가드 --- */
+/* --- 다크 모드 --- */
 html[data-theme="dark"] {
   color-scheme: dark !important;
   --background: #09090b !important;

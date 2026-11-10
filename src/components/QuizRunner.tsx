@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { VOCAB_DATA, WordItem } from '@/data/vocabData';
+import { ALL_VOCAB, WordItem } from '@/data/vocabData';
 import { playJapaneseSpeech } from '@/lib/speech';
 import { loadUserStats, saveQuizResult } from '@/lib/storage';
 import { kanaToHangul } from '@/lib/kanaToHangul';
@@ -54,14 +54,14 @@ export default function QuizRunner() {
 
   // 후보 단어 풀 추출
   const targetPool = useMemo(() => {
-    if (selectedRange === 'all') return VOCAB_DATA;
+    if (selectedRange === 'all') return ALL_VOCAB;
     if (selectedRange === 'wrong') {
-      return VOCAB_DATA.filter((w) => userWrongIds.includes(w.id));
+      return ALL_VOCAB.filter((w) => userWrongIds.includes(w.id));
     }
     if (selectedRange === 'travel_daily') {
-      return VOCAB_DATA.filter((w) => ['travel', 'food', 'daily', 'shopping'].includes(w.category));
+      return ALL_VOCAB.filter((w) => ['travel', 'food', 'daily', 'shopping'].includes(w.category));
     }
-    return VOCAB_DATA.filter((w) => w.level === selectedRange);
+    return ALL_VOCAB.filter((w) => w.level === selectedRange);
   }, [selectedRange, userWrongIds]);
 
   // 시험 시작 핸들러
@@ -75,7 +75,7 @@ export default function QuizRunner() {
     // 문제 데이터 생성
     const generatedQuestions: QuizQuestion[] = selectedWords.map((word) => {
       // 오답 후보 3개 추출
-      const wrongPool = VOCAB_DATA.filter((w) => w.id !== word.id);
+      const wrongPool = ALL_VOCAB.filter((w) => w.id !== word.id);
       const shuffledWrong = [...wrongPool].sort(() => 0.5 - Math.random()).slice(0, 3);
 
       let correctLabel = '';

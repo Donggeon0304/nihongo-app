@@ -4,12 +4,14 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { loadUserStats, UserStats } from '@/lib/storage';
+import { useAuth } from '@/components/AuthProvider';
 import ThemeToggle from '@/components/ThemeToggle';
-import { BookOpen, Calendar, Flame, GraduationCap, Home, Languages, Sparkles } from 'lucide-react';
+import { BookOpen, Calendar, Flame, GraduationCap, Home, Languages, LogIn, LogOut, Loader2, Sparkles } from 'lucide-react';
 
 export default function Header() {
   const pathname = usePathname();
   const [stats, setStats] = useState<UserStats | null>(null);
+  const { user, loading, signInWithGoogle, signOut, isSyncing } = useAuth();
 
   useEffect(() => {
     // 최초 로드 및 로컬스토리지 변경 이벤트 감지
@@ -70,7 +72,7 @@ export default function Header() {
           })}
         </nav>
 
-        {/* 스트릭 & 출석 뱃지 & 화이트/다크 테마 토글 */}
+        {/* 스트릭 & 출석 뱃지 & 로그인 & 테마 토글 */}
         <div className="flex items-center gap-2.5">
           <Link
             href="/calendar"
@@ -80,6 +82,43 @@ export default function Header() {
             <Flame className="w-4 h-4 text-amber-500 fill-amber-500 animate-pulse" />
             <span>{stats?.streak ?? 0}일 연속</span>
           </Link>
+
+          {/* 로그인/프로필 */}
+          {loading ? (
+            <div className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">
+              <Loader2 className="w-4 h-4 animate-spin text-zinc-400" />
+            </div>
+          ) : user ? (
+            <button
+              onClick={signOut}
+              disabled={isSyncing}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors text-xs font-semibold text-zinc-600 dark:text-zinc-300"
+              title={`${user.email} · 로그아웃`}
+            >
+              {user.user_metadata?.avatar_url ? (
+                <img
+                  src={user.user_metadata.avatar_url}
+                  alt=""
+                  className="w-6 h-6 rounded-full"
+                  referrerPolicy="no-referrer"
+                />
+              ) : (
+                <div className="w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center text-xs font-bold">
+                  {user.email?.[0]?.toUpperCase() ?? '?'}
+                </div>
+              )}
+              <LogOut className="w-3.5 h-3.5 hidden md:block" />
+            </button>
+          ) : (
+            <button
+              onClick={signInWithGoogle}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-50 dark:bg-rose-950/40 border border-rose-200/80 dark:border-rose-800/80 text-rose-600 dark:text-rose-400 font-bold text-xs hover:bg-rose-100 dark:hover:bg-rose-950/60 transition-colors"
+              title="Google 로그인"
+            >
+              <LogIn className="w-3.5 h-3.5" />
+              <span className="hidden md:inline">로그인</span>
+            </button>
+          )}
 
           <ThemeToggle />
         </div>
