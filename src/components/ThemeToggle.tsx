@@ -9,6 +9,7 @@ export default function ThemeToggle() {
 
   const applyTheme = (targetTheme: 'light' | 'dark') => {
     const root = document.documentElement;
+    root.setAttribute('data-theme', targetTheme);
     if (targetTheme === 'dark') {
       root.classList.add('dark');
       root.classList.remove('light');
@@ -22,15 +23,11 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     setMounted(true);
-    // 로컬스토리지 또는 시스템 설정 확인
-    const saved = localStorage.getItem('nihongo_theme');
-    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      setTheme('dark');
-      applyTheme('dark');
-    } else {
-      setTheme('light');
-      applyTheme('light');
-    }
+    // 기본값은 무조건 'light', 사용자가 직접 저장한 값이 'dark'일 때만 다크모드 적용
+    const saved = localStorage.getItem('nihongo_theme') || 'light';
+    const initialTheme = saved === 'dark' ? 'dark' : 'light';
+    setTheme(initialTheme);
+    applyTheme(initialTheme);
   }, []);
 
   const toggleTheme = () => {

@@ -7,10 +7,7 @@ import { VOCAB_DATA } from '@/data/vocabData';
 import { playJapaneseSpeech } from '@/lib/speech';
 import { kanaToHangul } from '@/lib/kanaToHangul';
 import {
-  BookOpen,
-  Calendar,
   Flame,
-  GraduationCap,
   Languages,
   Play,
   Sparkles,
@@ -37,7 +34,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* 1. 상단 환영 & 스트릭 히어로 배너 */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-rose-500 via-rose-600 to-amber-500 text-white p-7 md:p-10 shadow-xl shadow-rose-500/15">
         <div className="relative z-10 max-w-2xl">
@@ -90,108 +87,12 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* 2. 핵심 학습 메뉴 4대장 */}
-      <div>
-        <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-4 flex items-center gap-2">
-          <span>빠른 학습 메뉴</span>
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* 메뉴 1: 카나 훈련소 */}
-          <Link
-            href="/kana"
-            className="p-5 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-rose-400 dark:hover:border-rose-500 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between"
-          >
-            <div>
-              <div className="w-12 h-12 rounded-xl bg-rose-50 dark:bg-rose-950/60 text-rose-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                <Languages className="w-6 h-6" />
-              </div>
-              <h3 className="font-bold text-base text-zinc-900 dark:text-zinc-100 mb-1">
-                카나 훈련소
-              </h3>
-              <p className="text-xs text-zinc-500 leading-relaxed">
-                행(行) 단위로 원하는 글자만 골라 랜덤 생성하고 직접 읽어보며 마스터!
-              </p>
-            </div>
-            <div className="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-xs font-bold text-rose-600 dark:text-rose-400">
-              <span>훈련 시작</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </div>
-          </Link>
-
-          {/* 메뉴 2: 쪽지시험 */}
-          <Link
-            href="/quiz"
-            className="p-5 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-amber-400 dark:hover:border-amber-500 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between"
-          >
-            <div>
-              <div className="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                <GraduationCap className="w-6 h-6" />
-              </div>
-              <h3 className="font-bold text-base text-zinc-900 dark:text-zinc-100 mb-1">
-                단어 쪽지시험
-              </h3>
-              <p className="text-xs text-zinc-500 leading-relaxed">
-                10개, 20개, 50개, 100개씩 원하는 개수로 시험보고 오답노트에 자동 저장!
-              </p>
-            </div>
-            <div className="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-xs font-bold text-amber-600 dark:text-amber-400">
-              <span>시험 보기</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </div>
-          </Link>
-
-          {/* 메뉴 3: 단어장 */}
-          <Link
-            href="/vocab"
-            className="p-5 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-blue-400 dark:hover:border-blue-500 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between"
-          >
-            <div>
-              <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                <BookOpen className="w-6 h-6" />
-              </div>
-              <h3 className="font-bold text-base text-zinc-900 dark:text-zinc-100 mb-1">
-                일본어 단어장
-              </h3>
-              <p className="text-xs text-zinc-500 leading-relaxed">
-                JLPT N5~N1 급수별, 일상/여행 카테고리별 단어와 원어민 발음 재생.
-              </p>
-            </div>
-            <div className="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-xs font-bold text-blue-600 dark:text-blue-400">
-              <span>단어 탐색</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </div>
-          </Link>
-
-          {/* 메뉴 4: 기초 문법 */}
-          <Link
-            href="/grammar"
-            className="p-5 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-400 dark:hover:border-emerald-500 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between"
-          >
-            <div>
-              <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-500 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                <Sparkles className="w-6 h-6" />
-              </div>
-              <h3 className="font-bold text-base text-zinc-900 dark:text-zinc-100 mb-1">
-                핵심 문법
-              </h3>
-              <p className="text-xs text-zinc-500 leading-relaxed">
-                초보자가 꼭 알아야 할 기초 조사, 정중형, 동사 3그룹 변형 완벽 정리.
-              </p>
-            </div>
-            <div className="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-xs font-bold text-emerald-600 dark:text-emerald-400">
-              <span>문법 보기</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </div>
-          </Link>
-        </div>
-      </div>
-
-      {/* 3. 오늘 추천 단어 3개 미리보기 */}
+      {/* 2. 오늘 추천 단어 3개 바로 표시 */}
       <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 shadow-sm">
         <div className="flex items-center justify-between pb-4 border-b border-zinc-100 dark:border-zinc-800 mb-4">
-          <h3 className="text-base font-bold flex items-center gap-2">
+          <h2 className="text-base font-bold flex items-center gap-2 text-zinc-900 dark:text-zinc-100">
             <span>✨ 오늘의 추천 단어</span>
-          </h3>
+          </h2>
           <Link
             href="/vocab"
             className="text-xs font-bold text-rose-600 dark:text-rose-400 hover:underline flex items-center gap-1"

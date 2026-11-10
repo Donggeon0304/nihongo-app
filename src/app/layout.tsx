@@ -34,17 +34,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" suppressHydrationWarning>
+    <html lang="ko" data-theme="light" suppressHydrationWarning>
       <head>
         <meta name="color-scheme" content="light dark" />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function() {
   try {
-    var saved = localStorage.getItem('nihongo_theme');
-    var isDark = saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var theme = localStorage.getItem('nihongo_theme') || 'light';
     var root = document.documentElement;
-    if (isDark) {
+    root.setAttribute('data-theme', theme);
+    if (theme === 'dark') {
       root.classList.add('dark');
       root.classList.remove('light');
       root.style.colorScheme = 'dark';
