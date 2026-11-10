@@ -10,14 +10,20 @@ export default function ThemeToggle() {
   const applyTheme = (targetTheme: 'light' | 'dark') => {
     const root = document.documentElement;
     root.setAttribute('data-theme', targetTheme);
+    const meta1 = document.getElementById('color-scheme-meta');
+    const meta2 = document.getElementById('supported-color-schemes-meta');
     if (targetTheme === 'dark') {
       root.classList.add('dark');
       root.classList.remove('light');
-      root.style.colorScheme = 'dark';
+      root.style.colorScheme = 'only dark';
+      if (meta1) meta1.setAttribute('content', 'only dark');
+      if (meta2) meta2.setAttribute('content', 'only dark');
     } else {
       root.classList.remove('dark');
       root.classList.add('light');
-      root.style.colorScheme = 'light';
+      root.style.colorScheme = 'only light';
+      if (meta1) meta1.setAttribute('content', 'only light');
+      if (meta2) meta2.setAttribute('content', 'only light');
     }
   };
 

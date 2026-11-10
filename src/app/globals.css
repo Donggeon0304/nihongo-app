@@ -2,24 +2,24 @@
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, .dark, .dark *));
 
-/* 스마트폰 브라우저의 강제 다크모드(반전 필터) 우회 */
-html {
-  forced-color-adjust: none;
-  -webkit-forced-color-adjust: none;
+/* 스마트폰 브라우저의 강제 다크모드(반전 필터) 완전 차단 */
+html, body {
+  forced-color-adjust: none !important;
+  -webkit-forced-color-adjust: none !important;
 }
 
 :root {
-  color-scheme: light dark;
+  color-scheme: only light !important;
 }
 
 :root, html.light, html[data-theme="light"] {
-  color-scheme: light;
+  color-scheme: only light !important;
   --background: #ffffff;
   --foreground: #18181b;
 }
 
 html.dark, html[data-theme="dark"] {
-  color-scheme: dark;
+  color-scheme: only dark !important;
   --background: #09090b;
   --foreground: #f4f4f5;
 }
@@ -29,12 +29,23 @@ html.dark, html[data-theme="dark"] {
   --color-foreground: var(--foreground);
 }
 
+html[data-theme="light"], html[data-theme="light"] body {
+  background-color: #ffffff !important;
+  color: #18181b !important;
+}
+
+html[data-theme="dark"], html[data-theme="dark"] body {
+  background-color: #09090b !important;
+  color: #f4f4f5 !important;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
   transition: background-color 0.2s ease, color 0.2s ease;
-  forced-color-adjust: none;
+  forced-color-adjust: none !important;
+  -webkit-forced-color-adjust: none !important;
 }
 
 /* 3D 카드 뒤집기 스타일 */
