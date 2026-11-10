@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { loadUserStats, UserStats } from '@/lib/storage';
+import { useAuth } from '@/components/AuthProvider';
+import WelcomeScreen from '@/components/WelcomeScreen';
 import { ALL_VOCAB } from '@/data/vocabData';
 import { playJapaneseSpeech } from '@/lib/speech';
 import { kanaToHangul } from '@/lib/kanaToHangul';
@@ -14,12 +16,17 @@ import {
   Volume2,
   ArrowRight,
   CheckCircle2,
+  Cloud,
+  LogIn,
+  User,
 } from 'lucide-react';
 
 export default function HomePage() {
   const [stats, setStats] = useState<UserStats | null>(null);
   const [todayWords, setTodayWords] = useState(ALL_VOCAB.slice(0, 6));
   const [isTodayAttended, setIsTodayAttended] = useState<boolean>(false);
+  const [showWelcome, setShowWelcome] = useState(false);
+  const { user, loading, signInWithGoogle } = useAuth();
 
   useEffect(() => {
     // 출석은 퀴즈 완료 시에만 체크됨 (자동 아님)
@@ -32,7 +39,30 @@ export default function HomePage() {
     // 오늘의 단어 6개 랜덤 추출
     const shuffled = [...ALL_VOCAB].sort(() => 0.5 - Math.random());
     setTodayWords(shuffled.slice(0, 6));
+
+    // 첫 방문 시 웰컴 스크린 표시
+    const skipped = localStorage.getItem('nihongo_skip_welcome');
+    if (!skipped) {
+      setShowWelcome(true);
+    }
   }, []);
+
+  // 로그인 성공 시 웰컴 스크린 닫기
+  useEffect(() => {
+    if (user && showWelcome) {
+      localStorage.setItem('nihongo_skip_welcome', 'true');
+      setShowWelcome(false);
+    }
+  }, [user, showWelcome]);
+
+  const handleSkipWelcome = () => {
+    localStorage.setItem('nihongo_skip_welcome', 'true');
+    setShowWelcome(false);
+  };
+
+  if (showWelcome && !loading && !user) {
+    return <WelcomeScreen onSkip={handleSkipWelcome} />;
+  }
 
   return (
     <div className="space-y-6">
@@ -127,6 +157,53 @@ export default function HomePage() {
             <ArrowRight className="w-3 h-3" />
           </Link>
         </div>
+      )}
+
+      {/* 로그인 상태 배너 */}
+      {!loading && (
+        user ? (
+          <div className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800">
+            {user.user_metadata?.avatar_url ? (
+              <img
+                src={user.user_metadata.avatar_url}
+                alt=""
+                className="w-9 h-9 rounded-full border-2 border-blue-300 dark:border-blue-700 flex-shrink-0"
+                referrerPolicy="no-referrer"
+              />
+            ) : (
+              <div className="w-9 h-9 rounded-full bg-blue-500 text-white flex items-center justify-center text-sm font-bold flex-shrink-0">
+                {user.email?.[0]?.toUpperCase() ?? '?'}
+              </div>
+            )}
+            <div className="flex-1 min-w-0">
+              <div className="text-sm font-bold text-blue-800 dark:text-blue-200 truncate">
+                {user.user_metadata?.full_name || user.email}
+              </div>
+              <div className="text-xs text-blue-600 dark:text-blue-400 flex items-center gap-1">
+                <Cloud className="w-3 h-3" />
+                클라우드 동기화 활성화됨
+              </div>
+            </div>
+          </div>
+        ) : (
+          <button
+            onClick={signInWithGoogle}
+            className="w-full flex items-center gap-3 px-5 py-3 rounded-2xl bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors text-left"
+          >
+            <div className="w-9 h-9 rounded-full bg-zinc-200 dark:bg-zinc-700 flex items-center justify-center flex-shrink-0">
+              <User className="w-5 h-5 text-zinc-400" />
+            </div>
+            <div className="flex-1">
+              <div className="text-sm font-bold text-zinc-700 dark:text-zinc-300">
+                게스트 모드
+              </div>
+              <div className="text-xs text-zinc-500 dark:text-zinc-400">
+                로그인하면 학습 기록이 클라우드에 저장됩니다
+              </div>
+            </div>
+            <LogIn className="w-4 h-4 text-zinc-400 flex-shrink-0" />
+          </button>
+        )
       )}
 
       {/* 2. 오늘 추천 단어 6개 바로 표시 */}
