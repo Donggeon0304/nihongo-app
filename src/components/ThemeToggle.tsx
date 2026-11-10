@@ -7,16 +7,29 @@ export default function ThemeToggle() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [mounted, setMounted] = useState(false);
 
+  const applyTheme = (targetTheme: 'light' | 'dark') => {
+    const root = document.documentElement;
+    if (targetTheme === 'dark') {
+      root.classList.add('dark');
+      root.classList.remove('light');
+      root.style.colorScheme = 'dark';
+    } else {
+      root.classList.remove('dark');
+      root.classList.add('light');
+      root.style.colorScheme = 'light';
+    }
+  };
+
   useEffect(() => {
     setMounted(true);
     // 로컬스토리지 또는 시스템 설정 확인
     const saved = localStorage.getItem('nihongo_theme');
     if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       setTheme('dark');
-      document.documentElement.classList.add('dark');
+      applyTheme('dark');
     } else {
       setTheme('light');
-      document.documentElement.classList.remove('dark');
+      applyTheme('light');
     }
   }, []);
 
@@ -24,12 +37,7 @@ export default function ThemeToggle() {
     const next = theme === 'light' ? 'dark' : 'light';
     setTheme(next);
     localStorage.setItem('nihongo_theme', next);
-
-    if (next === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    applyTheme(next);
   };
 
   if (!mounted) {

@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     icon: '/icons/icon.svg',
     apple: '/icons/icon.svg',
   },
+  other: {
+    'color-scheme': 'light dark',
+  },
 };
 
 export const viewport: Viewport = {
@@ -31,7 +34,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
+    <html lang="ko" suppressHydrationWarning>
+      <head>
+        <meta name="color-scheme" content="light dark" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function() {
+  try {
+    var saved = localStorage.getItem('nihongo_theme');
+    var isDark = saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var root = document.documentElement;
+    if (isDark) {
+      root.classList.add('dark');
+      root.classList.remove('light');
+      root.style.colorScheme = 'dark';
+    } else {
+      root.classList.remove('dark');
+      root.classList.add('light');
+      root.style.colorScheme = 'light';
+    }
+  } catch(e) {}
+})();`,
+          }}
+        />
+      </head>
       <body className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased selection:bg-rose-500 selection:text-white">
         <Header />
         <main className="max-w-6xl mx-auto px-4 py-6 md:py-8">{children}</main>
