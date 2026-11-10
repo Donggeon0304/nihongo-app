@@ -10,24 +10,19 @@ export default function ThemeToggle() {
   const applyTheme = (targetTheme: 'light' | 'dark') => {
     const root = document.documentElement;
     root.setAttribute('data-theme', targetTheme);
-    const meta = document.getElementById('color-scheme-meta');
-
     if (targetTheme === 'dark') {
       root.classList.add('dark');
       root.classList.remove('light');
-      root.style.colorScheme = 'only dark';
-      if (meta) meta.setAttribute('content', 'only dark');
+      root.style.colorScheme = 'dark';
     } else {
       root.classList.remove('dark');
       root.classList.add('light');
-      root.style.colorScheme = 'only light';
-      if (meta) meta.setAttribute('content', 'only light');
+      root.style.colorScheme = 'light';
     }
   };
 
   useEffect(() => {
     setMounted(true);
-    // 기본값은 무조건 'light', 사용자가 직접 저장한 값이 'dark'일 때만 다크모드 적용
     const saved = localStorage.getItem('nihongo_theme') || 'light';
     const initialTheme = saved === 'dark' ? 'dark' : 'light';
     setTheme(initialTheme);
