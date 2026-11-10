@@ -80,7 +80,7 @@ export default function KanaPage() {
       {viewTab === 'practice' ? (
         <KanaPractice mode={kanaMode} />
       ) : (
-        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 shadow-sm">
+        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-3 sm:p-6 shadow-sm">
           <KanaTable mode={kanaMode} />
         </div>
       )}

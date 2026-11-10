@@ -125,78 +125,76 @@ export default function KanaTable({ mode }: KanaTableProps) {
         </button>
       </div>
 
-      {/* 가로 나열 50음도 테이블 */}
-      <div className="overflow-x-auto pb-2">
-        <div className="min-w-[620px] space-y-2">
-          {/* 상단 단(段) 헤더 */}
-          <div className="grid grid-cols-[80px_repeat(5,1fr)] gap-2 text-center text-xs font-bold text-zinc-400 px-1">
-            <div>행(行)</div>
-            {danLabels.map((dan) => (
-              <div key={dan}>{dan}</div>
-            ))}
-          </div>
-
-          {/* 각 행 가로 정렬 */}
-          {activeLayout.map((row) => (
-            <div
-              key={row.key}
-              className="grid grid-cols-[80px_repeat(5,1fr)] gap-2 items-center"
-            >
-              {/* 행 이름 뱃지 */}
-              <div className="h-16 rounded-xl bg-zinc-100 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center font-bold text-xs text-zinc-700 dark:text-zinc-300">
-                {row.name}
-              </div>
-
-              {/* 5개 단 가로 열 */}
-              {row.danKeys.map((id, danIdx) => {
-                if (!id) {
-                  // 야행, 와행의 빈자리
-                  return (
-                    <div
-                      key={`empty_${row.key}_${danIdx}`}
-                      className="h-16 rounded-xl bg-zinc-50/40 dark:bg-zinc-900/40 border border-dashed border-zinc-200 dark:border-zinc-800/60"
-                    />
-                  );
-                }
-
-                const item = kanaMap.get(id);
-                if (!item) return <div key={id} className="h-16" />;
-
-                const char = mode === 'hiragana' ? item.hiragana : item.katakana;
-
-                return (
-                  <button
-                    key={item.id}
-                    onClick={() => handlePlay(item)}
-                    className="h-16 flex flex-col items-center justify-center rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-rose-400 dark:hover:border-rose-500 shadow-sm hover:shadow-md transition-all active:scale-95 group relative overflow-hidden"
-                  >
-                    <span className="text-2xl font-black text-zinc-800 dark:text-zinc-100 group-hover:text-rose-500 transition-colors">
-                      {char}
-                    </span>
-
-                    {/* 발음 숨기기 상태에 따른 조건부 렌더링 (숨김 모드일 때는 마우스 호버 시에만 살짝 노출) */}
-                    <div
-                      className={`transition-opacity duration-200 ${
-                        hidePronunciation
-                          ? 'opacity-0 group-hover:opacity-100'
-                          : 'opacity-100'
-                      }`}
-                    >
-                      <div className="flex items-center gap-1 text-[11px] font-semibold text-zinc-400">
-                        <span>{item.romaji}</span>
-                        <span className="text-[10px] text-zinc-500">({item.korean})</span>
-                      </div>
-                    </div>
-
-                    <div className="absolute top-1.5 right-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Volume2 className="w-3 h-3 text-rose-500" />
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
+      {/* 가로 나열 50음도 테이블 — 화면 크기에 맞게 유동적 */}
+      <div className="space-y-1.5 sm:space-y-2">
+        {/* 상단 단(段) 헤더 */}
+        <div className="grid grid-cols-[40px_repeat(5,1fr)] sm:grid-cols-[80px_repeat(5,1fr)] gap-1 sm:gap-2 text-center text-[10px] sm:text-xs font-bold text-zinc-400 px-0.5 sm:px-1">
+          <div>행</div>
+          {['a', 'i', 'u', 'e', 'o'].map((dan) => (
+            <div key={dan}>{dan}단</div>
           ))}
         </div>
+
+        {/* 각 행 가로 정렬 */}
+        {activeLayout.map((row) => (
+          <div
+            key={row.key}
+            className="grid grid-cols-[40px_repeat(5,1fr)] sm:grid-cols-[80px_repeat(5,1fr)] gap-1 sm:gap-2 items-center"
+          >
+            {/* 행 이름 뱃지 */}
+            <div className="h-12 sm:h-16 rounded-lg sm:rounded-xl bg-zinc-100 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center font-bold text-[10px] sm:text-xs text-zinc-700 dark:text-zinc-300">
+              {row.name}
+            </div>
+
+            {/* 5개 단 가로 열 */}
+            {row.danKeys.map((id, danIdx) => {
+              if (!id) {
+                // 야행, 와행의 빈자리
+                return (
+                  <div
+                    key={`empty_${row.key}_${danIdx}`}
+                    className="h-12 sm:h-16 rounded-lg sm:rounded-xl bg-zinc-50/40 dark:bg-zinc-900/40 border border-dashed border-zinc-200 dark:border-zinc-800/60"
+                  />
+                );
+              }
+
+              const item = kanaMap.get(id);
+              if (!item) return <div key={id} className="h-12 sm:h-16" />;
+
+              const char = mode === 'hiragana' ? item.hiragana : item.katakana;
+
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handlePlay(item)}
+                  className="h-12 sm:h-16 flex flex-col items-center justify-center rounded-lg sm:rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-rose-400 dark:hover:border-rose-500 shadow-sm hover:shadow-md transition-all active:scale-95 group relative overflow-hidden"
+                >
+                  <span className="text-lg sm:text-2xl font-black text-zinc-800 dark:text-zinc-100 group-hover:text-rose-500 transition-colors">
+                    {char}
+                  </span>
+
+                  {/* 발음 숨기기 상태에 따른 조건부 렌더링 */}
+                  <div
+                    className={`transition-opacity duration-200 ${
+                      hidePronunciation
+                        ? 'opacity-0 group-hover:opacity-100'
+                        : 'opacity-100'
+                    }`}
+                  >
+                    <div className="flex items-center gap-0.5 text-[9px] sm:text-[11px] font-semibold text-zinc-400">
+                      <span>{item.romaji}</span>
+                      <span className="text-[9px] sm:text-[10px] text-zinc-500">({item.korean})</span>
+                    </div>
+                  </div>
+
+                  <div className="absolute top-1 right-1 sm:top-1.5 sm:right-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Volume2 className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-rose-500" />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        ))}
       </div>
     </div>
   );
